@@ -1,0 +1,4202 @@
+[
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\App.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 11,
+        "content": "// Layout"
+      },
+      {
+        "type": "single-line",
+        "line": 15,
+        "content": "// Pages"
+      },
+      {
+        "type": "single-line",
+        "line": 31,
+        "content": "// Dashboard"
+      },
+      {
+        "type": "single-line",
+        "line": 39,
+        "content": "// Helpers"
+      },
+      {
+        "type": "single-line",
+        "line": 42,
+        "content": "// Route Guards"
+      },
+      {
+        "type": "single-line",
+        "line": 48,
+        "content": "// pricing"
+      },
+      {
+        "type": "multi-line",
+        "line": 51,
+        "content": "/* ---------- SCROLL TO TOP COMPONENT ---------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 80,
+        "content": "/* <-- Added ScrollToTop */"
+      },
+      {
+        "type": "multi-line",
+        "line": 83,
+        "content": "/* ---------- GUEST ONLY ---------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 100,
+        "content": "/* ---------- PUBLIC ROUTES ---------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 115,
+        "content": "/* ---------- PROTECTED USER ROUTES ---------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 124,
+        "content": "/* ---------- PROTECTED DASHBOARD ---------- */"
+      },
+      {
+        "type": "jsx",
+        "line": 80,
+        "content": "{/* <-- Added ScrollToTop */}"
+      },
+      {
+        "type": "jsx",
+        "line": 83,
+        "content": "{/* ---------- GUEST ONLY ---------- */}"
+      },
+      {
+        "type": "jsx",
+        "line": 100,
+        "content": "{/* ---------- PUBLIC ROUTES ---------- */}"
+      },
+      {
+        "type": "jsx",
+        "line": 115,
+        "content": "{/* ---------- PROTECTED USER ROUTES ---------- */}"
+      },
+      {
+        "type": "jsx",
+        "line": 124,
+        "content": "{/* ---------- PROTECTED DASHBOARD ---------- */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\AddSocialLinkModal.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 81,
+        "content": "// Filter countries based on search query"
+      },
+      {
+        "type": "single-line",
+        "line": 89,
+        "content": "// Close dropdown when clicking outside"
+      },
+      {
+        "type": "single-line",
+        "line": 100,
+        "content": "// Focus search input when dropdown opens"
+      },
+      {
+        "type": "single-line",
+        "line": 109,
+        "content": "// Reset form when modal opens"
+      },
+      {
+        "type": "single-line",
+        "line": 130,
+        "content": "// Email validation"
+      },
+      {
+        "type": "single-line",
+        "line": 144,
+        "content": "// WhatsApp validation (number only)"
+      },
+      {
+        "type": "single-line",
+        "line": 156,
+        "content": "// Format as WhatsApp link"
+      },
+      {
+        "type": "single-line",
+        "line": 161,
+        "content": "//wa.me/${fullNumber}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 164,
+        "content": "// Phone validation"
+      },
+      {
+        "type": "single-line",
+        "line": 215,
+        "content": "// Reset URL when platform changes"
+      },
+      {
+        "type": "multi-line",
+        "line": 206,
+        "content": "/* Platform Select */"
+      },
+      {
+        "type": "multi-line",
+        "line": 229,
+        "content": "/* Input fields */"
+      },
+      {
+        "type": "multi-line",
+        "line": 244,
+        "content": "/* Custom Country Code Selector */"
+      },
+      {
+        "type": "multi-line",
+        "line": 272,
+        "content": "/* Dropdown Menu */"
+      },
+      {
+        "type": "multi-line",
+        "line": 275,
+        "content": "/* Search Box */"
+      },
+      {
+        "type": "multi-line",
+        "line": 293,
+        "content": "/* Countries List */"
+      },
+      {
+        "type": "multi-line",
+        "line": 338,
+        "content": "/* Phone/WhatsApp Input */"
+      },
+      {
+        "type": "multi-line",
+        "line": 369,
+        "content": "/* Buttons */"
+      },
+      {
+        "type": "jsx",
+        "line": 206,
+        "content": "{/* Platform Select */}"
+      },
+      {
+        "type": "jsx",
+        "line": 229,
+        "content": "{/* Input fields */}"
+      },
+      {
+        "type": "jsx",
+        "line": 244,
+        "content": "{/* Custom Country Code Selector */}"
+      },
+      {
+        "type": "jsx",
+        "line": 272,
+        "content": "{/* Dropdown Menu */}"
+      },
+      {
+        "type": "jsx",
+        "line": 275,
+        "content": "{/* Search Box */}"
+      },
+      {
+        "type": "jsx",
+        "line": 293,
+        "content": "{/* Countries List */}"
+      },
+      {
+        "type": "jsx",
+        "line": 338,
+        "content": "{/* Phone/WhatsApp Input */}"
+      },
+      {
+        "type": "jsx",
+        "line": 369,
+        "content": "{/* Buttons */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\AIDesignPanel.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 115,
+        "content": "//www.w3.org/2000/svg\""
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\AILogoGenerator.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 23,
+        "content": "// Preload the image"
+      },
+      {
+        "type": "single-line",
+        "line": 39,
+        "content": "// Clear prompt after successful generation"
+      },
+      {
+        "type": "single-line",
+        "line": 129,
+        "content": "//www.w3.org/2000/svg\""
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\Aiutils.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 1,
+        "content": "// Enhanced AI Logo Generation"
+      },
+      {
+        "type": "single-line",
+        "line": 19,
+        "content": "//image.pollinations.ai/prompt/${encodeURIComponent("
+      },
+      {
+        "type": "single-line",
+        "line": 30,
+        "content": "// Enhanced AI Background Generation"
+      },
+      {
+        "type": "single-line",
+        "line": 48,
+        "content": "//image.pollinations.ai/prompt/${encodeURIComponent("
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\BasicInfoSection.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 22,
+        "content": "// Fetch the image from the URL"
+      },
+      {
+        "type": "single-line",
+        "line": 26,
+        "content": "// Create a File object from the blob"
+      },
+      {
+        "type": "single-line",
+        "line": 31,
+        "content": "// Update profile with both the URL (for preview) and File (for upload)"
+      },
+      {
+        "type": "single-line",
+        "line": 34,
+        "content": "// ✅ Now it will be sent to backend"
+      },
+      {
+        "type": "single-line",
+        "line": 39,
+        "content": "// You might want to show an error to the user here"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\constants.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 18,
+        "content": "//yoursite.com\","
+      },
+      {
+        "type": "single-line",
+        "line": 70,
+        "content": "// JSX Element for easy rendering"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\CreateCardHero.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 1,
+        "content": "// src/components/CreateCard/CreateCardHero.jsx"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\ImageUpload.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 12,
+        "content": "// 'upload' or 'ai'"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\LiveCardPreview.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 1,
+        "content": "// src/components/CreateCard/LiveCardPreview.jsx"
+      },
+      {
+        "type": "single-line",
+        "line": 4,
+        "content": "// ==================== UTILITY FUNCTIONS ===================="
+      },
+      {
+        "type": "single-line",
+        "line": 7,
+        "content": "//linkme.io/your-smart-identity\";"
+      },
+      {
+        "type": "single-line",
+        "line": 16,
+        "content": "//linkme.io/${slug}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 20,
+        "content": "// If AI mode and has AI background, use it"
+      },
+      {
+        "type": "single-line",
+        "line": 34,
+        "content": "// Manual mode - use the selected color"
+      },
+      {
+        "type": "single-line",
+        "line": 114,
+        "content": "// Default fallback"
+      },
+      {
+        "type": "single-line",
+        "line": 124,
+        "content": "// Helper function to adjust color brightness"
+      },
+      {
+        "type": "single-line",
+        "line": 145,
+        "content": "// ==================== CARD PREVIEW COMPONENT ===================="
+      },
+      {
+        "type": "single-line",
+        "line": 334,
+        "content": "// ==================== MAIN LIVE PREVIEW COMPONENT ===================="
+      },
+      {
+        "type": "multi-line",
+        "line": 168,
+        "content": "/* Background overlay */"
+      },
+      {
+        "type": "multi-line",
+        "line": 175,
+        "content": "/* Neon glow effect */"
+      },
+      {
+        "type": "multi-line",
+        "line": 195,
+        "content": "/* Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 199,
+        "content": "/* Header with logo/avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 257,
+        "content": "/* Main content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 298,
+        "content": "/* Footer with tags and QR */"
+      },
+      {
+        "type": "multi-line",
+        "line": 373,
+        "content": "/* Template info badge */"
+      },
+      {
+        "type": "jsx",
+        "line": 168,
+        "content": "{/* Background overlay */}"
+      },
+      {
+        "type": "jsx",
+        "line": 175,
+        "content": "{/* Neon glow effect */}"
+      },
+      {
+        "type": "jsx",
+        "line": 195,
+        "content": "{/* Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 199,
+        "content": "{/* Header with logo/avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 257,
+        "content": "{/* Main content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 298,
+        "content": "{/* Footer with tags and QR */}"
+      },
+      {
+        "type": "jsx",
+        "line": 373,
+        "content": "{/* Template info badge */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\ProfileForm.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 34,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 68,
+        "content": "// eslint-disable-next-line react-hooks/exhaustive-deps"
+      },
+      {
+        "type": "single-line",
+        "line": 153,
+        "content": "//www.w3.org/2000/svg\""
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\ProfileTypeSwitch.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 1,
+        "content": "// src/components/CreateCard/ProfileTypeSwitch.jsx"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\CreateCard\\SocialLinksSection.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 38,
+        "content": "// Close dropdowns when clicking outside"
+      },
+      {
+        "type": "single-line",
+        "line": 61,
+        "content": "// Focus search input when dropdown opens"
+      },
+      {
+        "type": "single-line",
+        "line": 74,
+        "content": "// Filter countries based on search"
+      },
+      {
+        "type": "single-line",
+        "line": 121,
+        "content": "// Country Selector Component (reusable)"
+      },
+      {
+        "type": "single-line",
+        "line": 238,
+        "content": "// PHONE INPUT"
+      },
+      {
+        "type": "single-line",
+        "line": 317,
+        "content": "// WHATSAPP INPUT WITH COUNTRY CODE"
+      },
+      {
+        "type": "single-line",
+        "line": 396,
+        "content": "// EMAIL INPUT"
+      },
+      {
+        "type": "single-line",
+        "line": 460,
+        "content": "// OTHER SOCIAL PLATFORMS"
+      },
+      {
+        "type": "multi-line",
+        "line": 153,
+        "content": "/* Dropdown Menu */"
+      },
+      {
+        "type": "multi-line",
+        "line": 156,
+        "content": "/* Search Box */"
+      },
+      {
+        "type": "multi-line",
+        "line": 174,
+        "content": "/* Countries List */"
+      },
+      {
+        "type": "multi-line",
+        "line": 217,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 235,
+        "content": "/* Social Links Grid */"
+      },
+      {
+        "type": "multi-line",
+        "line": 271,
+        "content": "/* Phone Number Input */"
+      },
+      {
+        "type": "multi-line",
+        "line": 350,
+        "content": "/* WhatsApp Number Input */"
+      },
+      {
+        "type": "jsx",
+        "line": 153,
+        "content": "{/* Dropdown Menu */}"
+      },
+      {
+        "type": "jsx",
+        "line": 156,
+        "content": "{/* Search Box */}"
+      },
+      {
+        "type": "jsx",
+        "line": 174,
+        "content": "{/* Countries List */}"
+      },
+      {
+        "type": "jsx",
+        "line": 217,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 235,
+        "content": "{/* Social Links Grid */}"
+      },
+      {
+        "type": "jsx",
+        "line": 271,
+        "content": "{/* Phone Number Input */}"
+      },
+      {
+        "type": "jsx",
+        "line": 350,
+        "content": "{/* WhatsApp Number Input */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\EditProfile\\BasicInfoForm.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 33,
+        "content": "/* Profile Image */"
+      },
+      {
+        "type": "multi-line",
+        "line": 71,
+        "content": "/*\"\r\n                  onChange={onImageChange}\r\n                  className=\"hidden\"\r\n                />\r\n              </label>\r\n              <p className=\"text-xs text-gray-500 mt-2\">\r\n                Recommended: Square image (1:1 ratio), max 5MB\r\n              </p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        {/* Name */"
+      },
+      {
+        "type": "multi-line",
+        "line": 97,
+        "content": "/* Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 115,
+        "content": "/* Bio */"
+      },
+      {
+        "type": "multi-line",
+        "line": 132,
+        "content": "/* Color Picker */"
+      },
+      {
+        "type": "multi-line",
+        "line": 154,
+        "content": "/* Template Selector */"
+      },
+      {
+        "type": "multi-line",
+        "line": 179,
+        "content": "/* Save Button */"
+      },
+      {
+        "type": "jsx",
+        "line": 33,
+        "content": "{/* Profile Image */}"
+      },
+      {
+        "type": "jsx",
+        "line": 83,
+        "content": "{/* Name */}"
+      },
+      {
+        "type": "jsx",
+        "line": 97,
+        "content": "{/* Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 115,
+        "content": "{/* Bio */}"
+      },
+      {
+        "type": "jsx",
+        "line": 132,
+        "content": "{/* Color Picker */}"
+      },
+      {
+        "type": "jsx",
+        "line": 154,
+        "content": "{/* Template Selector */}"
+      },
+      {
+        "type": "jsx",
+        "line": 179,
+        "content": "{/* Save Button */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\EditProfile\\ProfileSidebar.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 13,
+        "content": "// ==================== UTILITY FUNCTIONS ===================="
+      },
+      {
+        "type": "single-line",
+        "line": 16,
+        "content": "//linkme.io/your-smart-identity\";"
+      },
+      {
+        "type": "single-line",
+        "line": 42,
+        "content": "// If AI mode and has AI background, use it"
+      },
+      {
+        "type": "single-line",
+        "line": 56,
+        "content": "// Manual mode - use the selected color"
+      },
+      {
+        "type": "single-line",
+        "line": 136,
+        "content": "// Default fallback"
+      },
+      {
+        "type": "single-line",
+        "line": 146,
+        "content": "// ==================== LIVE CARD PREVIEW COMPONENT ===================="
+      },
+      {
+        "type": "single-line",
+        "line": 355,
+        "content": "// ==================== MAIN SIDEBAR COMPONENT ===================="
+      },
+      {
+        "type": "multi-line",
+        "line": 158,
+        "content": "/* Template Info Badge */"
+      },
+      {
+        "type": "multi-line",
+        "line": 177,
+        "content": "/* Card Preview */"
+      },
+      {
+        "type": "multi-line",
+        "line": 187,
+        "content": "/* Background overlay */"
+      },
+      {
+        "type": "multi-line",
+        "line": 194,
+        "content": "/* Neon glow effect */"
+      },
+      {
+        "type": "multi-line",
+        "line": 214,
+        "content": "/* Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 218,
+        "content": "/* Header with logo/avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 276,
+        "content": "/* Main content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 317,
+        "content": "/* Footer with tags and QR */"
+      },
+      {
+        "type": "multi-line",
+        "line": 373,
+        "content": "/* Live Card Preview - STICKY POSITION */"
+      },
+      {
+        "type": "multi-line",
+        "line": 397,
+        "content": "/* Regular Scrollable Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 399,
+        "content": "/* Quick Actions */"
+      },
+      {
+        "type": "multi-line",
+        "line": 450,
+        "content": "/* Stats Card */"
+      },
+      {
+        "type": "jsx",
+        "line": 158,
+        "content": "{/* Template Info Badge */}"
+      },
+      {
+        "type": "jsx",
+        "line": 177,
+        "content": "{/* Card Preview */}"
+      },
+      {
+        "type": "jsx",
+        "line": 187,
+        "content": "{/* Background overlay */}"
+      },
+      {
+        "type": "jsx",
+        "line": 194,
+        "content": "{/* Neon glow effect */}"
+      },
+      {
+        "type": "jsx",
+        "line": 214,
+        "content": "{/* Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 218,
+        "content": "{/* Header with logo/avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 276,
+        "content": "{/* Main content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 317,
+        "content": "{/* Footer with tags and QR */}"
+      },
+      {
+        "type": "jsx",
+        "line": 373,
+        "content": "{/* Live Card Preview - STICKY POSITION */}"
+      },
+      {
+        "type": "jsx",
+        "line": 397,
+        "content": "{/* Regular Scrollable Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 399,
+        "content": "{/* Quick Actions */}"
+      },
+      {
+        "type": "jsx",
+        "line": 450,
+        "content": "{/* Stats Card */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\EditProfile\\SettingsTab.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 28,
+        "content": "/* Profile URL */"
+      },
+      {
+        "type": "multi-line",
+        "line": 50,
+        "content": "/* Profile Slug */"
+      },
+      {
+        "type": "multi-line",
+        "line": 66,
+        "content": "/* Profile Type */"
+      },
+      {
+        "type": "jsx",
+        "line": 28,
+        "content": "{/* Profile URL */}"
+      },
+      {
+        "type": "jsx",
+        "line": 50,
+        "content": "{/* Profile Slug */}"
+      },
+      {
+        "type": "jsx",
+        "line": 66,
+        "content": "{/* Profile Type */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\MyProfile\\ProfileCardPreview.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 5,
+        "content": "// ==================== UTILITY FUNCTIONS ===================="
+      },
+      {
+        "type": "single-line",
+        "line": 8,
+        "content": "//linkme.io/your-smart-identity\";"
+      },
+      {
+        "type": "single-line",
+        "line": 14,
+        "content": "// If AI mode and has AI background, use it"
+      },
+      {
+        "type": "single-line",
+        "line": 28,
+        "content": "// Manual mode - use the selected color"
+      },
+      {
+        "type": "single-line",
+        "line": 108,
+        "content": "// Default fallback"
+      },
+      {
+        "type": "single-line",
+        "line": 118,
+        "content": "// Helper function to adjust color brightness"
+      },
+      {
+        "type": "single-line",
+        "line": 139,
+        "content": "// ==================== PROFILE CARD COMPONENT ===================="
+      },
+      {
+        "type": "multi-line",
+        "line": 156,
+        "content": "/* Card Preview */"
+      },
+      {
+        "type": "multi-line",
+        "line": 166,
+        "content": "/* Background overlay */"
+      },
+      {
+        "type": "multi-line",
+        "line": 173,
+        "content": "/* Neon glow effect */"
+      },
+      {
+        "type": "multi-line",
+        "line": 193,
+        "content": "/* Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 197,
+        "content": "/* Header with logo/avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 255,
+        "content": "/* Main content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 296,
+        "content": "/* Footer with tags and QR */"
+      },
+      {
+        "type": "multi-line",
+        "line": 340,
+        "content": "/* QR Code Popup */"
+      },
+      {
+        "type": "jsx",
+        "line": 156,
+        "content": "{/* Card Preview */}"
+      },
+      {
+        "type": "jsx",
+        "line": 166,
+        "content": "{/* Background overlay */}"
+      },
+      {
+        "type": "jsx",
+        "line": 173,
+        "content": "{/* Neon glow effect */}"
+      },
+      {
+        "type": "jsx",
+        "line": 193,
+        "content": "{/* Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 197,
+        "content": "{/* Header with logo/avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 255,
+        "content": "{/* Main content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 296,
+        "content": "{/* Footer with tags and QR */}"
+      },
+      {
+        "type": "jsx",
+        "line": 340,
+        "content": "{/* QR Code Popup */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\MyProfile\\ProfilesGrid.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 22,
+        "content": "/* Card Preview */"
+      },
+      {
+        "type": "multi-line",
+        "line": 30,
+        "content": "/* Profile Info & Stats */"
+      },
+      {
+        "type": "multi-line",
+        "line": 57,
+        "content": "/* Action Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 106,
+        "content": "/* Delete Button */"
+      },
+      {
+        "type": "jsx",
+        "line": 22,
+        "content": "{/* Card Preview */}"
+      },
+      {
+        "type": "jsx",
+        "line": 30,
+        "content": "{/* Profile Info & Stats */}"
+      },
+      {
+        "type": "jsx",
+        "line": 57,
+        "content": "{/* Action Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 106,
+        "content": "{/* Delete Button */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\MyProfile\\ProfilesList.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 26,
+        "content": "/* Profile Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 72,
+        "content": "/* Stats */"
+      },
+      {
+        "type": "multi-line",
+        "line": 86,
+        "content": "/* Action Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 146,
+        "content": "/* QR Code */"
+      },
+      {
+        "type": "jsx",
+        "line": 26,
+        "content": "{/* Profile Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 72,
+        "content": "{/* Stats */}"
+      },
+      {
+        "type": "jsx",
+        "line": 86,
+        "content": "{/* Action Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 146,
+        "content": "{/* QR Code */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\overView\\DashboardUtils.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 1,
+        "content": "// ==================== UTILITY FUNCTIONS ===================="
+      },
+      {
+        "type": "single-line",
+        "line": 5,
+        "content": "//linkme.io/your-smart-identity\";"
+      },
+      {
+        "type": "single-line",
+        "line": 14,
+        "content": "//linkme.io/${slug}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 18,
+        "content": "// If AI mode and has AI background, use it"
+      },
+      {
+        "type": "single-line",
+        "line": 32,
+        "content": "// Manual mode - use the selected color"
+      },
+      {
+        "type": "single-line",
+        "line": 112,
+        "content": "// Default fallback"
+      },
+      {
+        "type": "single-line",
+        "line": 122,
+        "content": "// Helper function to adjust color brightness"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\overView\\ProfileCard.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 26,
+        "content": "/* Background overlay */"
+      },
+      {
+        "type": "multi-line",
+        "line": 33,
+        "content": "/* Neon glow effect */"
+      },
+      {
+        "type": "multi-line",
+        "line": 53,
+        "content": "/* Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 57,
+        "content": "/* Header with logo/avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 115,
+        "content": "/* Main content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 156,
+        "content": "/* Footer with tags and QR */"
+      },
+      {
+        "type": "jsx",
+        "line": 26,
+        "content": "{/* Background overlay */}"
+      },
+      {
+        "type": "jsx",
+        "line": 33,
+        "content": "{/* Neon glow effect */}"
+      },
+      {
+        "type": "jsx",
+        "line": 53,
+        "content": "{/* Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 57,
+        "content": "{/* Header with logo/avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 115,
+        "content": "{/* Main content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 156,
+        "content": "{/* Footer with tags and QR */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\Profile\\ChangeEmailModal.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 12,
+        "content": "// 1: Request, 2: Verify OTP"
+      },
+      {
+        "type": "single-line",
+        "line": 74,
+        "content": "// Allow only digits"
+      },
+      {
+        "type": "single-line",
+        "line": 92,
+        "content": "// Focus on last filled input or last input"
+      },
+      {
+        "type": "single-line",
+        "line": 107,
+        "content": "// Validation"
+      },
+      {
+        "type": "single-line",
+        "line": 204,
+        "content": "// Notify parent component"
+      },
+      {
+        "type": "single-line",
+        "line": 267,
+        "content": "// Step 1: Request Email Change"
+      },
+      {
+        "type": "single-line",
+        "line": 368,
+        "content": "// Step 2: Verify OTP"
+      },
+      {
+        "type": "multi-line",
+        "line": 247,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 264,
+        "content": "/* Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 274,
+        "content": "/* New Email */"
+      },
+      {
+        "type": "multi-line",
+        "line": 301,
+        "content": "/* Current Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 342,
+        "content": "/* Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 385,
+        "content": "/* OTP Input */"
+      },
+      {
+        "type": "multi-line",
+        "line": 417,
+        "content": "/* Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 445,
+        "content": "/* Resend OTP */"
+      },
+      {
+        "type": "jsx",
+        "line": 247,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 264,
+        "content": "{/* Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 274,
+        "content": "{/* New Email */}"
+      },
+      {
+        "type": "jsx",
+        "line": 301,
+        "content": "{/* Current Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 342,
+        "content": "{/* Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 385,
+        "content": "{/* OTP Input */}"
+      },
+      {
+        "type": "jsx",
+        "line": 417,
+        "content": "{/* Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 445,
+        "content": "{/* Resend OTP */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\Profile\\PasswordSettings.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 30,
+        "content": "// Calculate password strength for new password"
+      },
+      {
+        "type": "single-line",
+        "line": 110,
+        "content": "// For Vite"
+      },
+      {
+        "type": "multi-line",
+        "line": 167,
+        "content": "/* Current Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 196,
+        "content": "/* New Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 222,
+        "content": "/* Password Strength Indicator */"
+      },
+      {
+        "type": "multi-line",
+        "line": 255,
+        "content": "/* Confirm New Password */"
+      },
+      {
+        "type": "jsx",
+        "line": 167,
+        "content": "{/* Current Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 196,
+        "content": "{/* New Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 222,
+        "content": "{/* Password Strength Indicator */}"
+      },
+      {
+        "type": "jsx",
+        "line": 255,
+        "content": "{/* Confirm New Password */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\Dashboard\\Profile\\ProfileSettings.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 20,
+        "content": "// For Vite"
+      },
+      {
+        "type": "multi-line",
+        "line": 199,
+        "content": "/* ✅ UPDATED: Email Field with Change Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 265,
+        "content": "/* ✅ Email Change Modal */"
+      },
+      {
+        "type": "jsx",
+        "line": 199,
+        "content": "{/* ✅ UPDATED: Email Field with Change Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 265,
+        "content": "{/* ✅ Email Change Modal */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\home\\FinalCTA.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 10,
+        "content": "/* Faint BIG background text */"
+      },
+      {
+        "type": "multi-line",
+        "line": 26,
+        "content": "/* Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 32,
+        "content": "/* Subtitle */"
+      },
+      {
+        "type": "multi-line",
+        "line": 37,
+        "content": "/* Button */"
+      },
+      {
+        "type": "jsx",
+        "line": 10,
+        "content": "{/* Faint BIG background text */}"
+      },
+      {
+        "type": "jsx",
+        "line": 26,
+        "content": "{/* Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 32,
+        "content": "{/* Subtitle */}"
+      },
+      {
+        "type": "jsx",
+        "line": 37,
+        "content": "{/* Button */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\home\\Hero.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 8,
+        "content": "/* LEFT CONTENT */"
+      },
+      {
+        "type": "multi-line",
+        "line": 38,
+        "content": "/* RIGHT IMAGE */"
+      },
+      {
+        "type": "multi-line",
+        "line": 46,
+        "content": "/* glow */"
+      },
+      {
+        "type": "jsx",
+        "line": 8,
+        "content": "{/* LEFT CONTENT */}"
+      },
+      {
+        "type": "jsx",
+        "line": 38,
+        "content": "{/* RIGHT IMAGE */}"
+      },
+      {
+        "type": "jsx",
+        "line": 46,
+        "content": "{/* glow */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\home\\HowItWorks.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 26,
+        "content": "/* Faded Background Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 33,
+        "content": "/* Left: Phone Mockup */"
+      },
+      {
+        "type": "multi-line",
+        "line": 44,
+        "content": "/* Right: Steps Text */"
+      },
+      {
+        "type": "multi-line",
+        "line": 59,
+        "content": "/* Steps */"
+      },
+      {
+        "type": "jsx",
+        "line": 26,
+        "content": "{/* Faded Background Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 33,
+        "content": "{/* Left: Phone Mockup */}"
+      },
+      {
+        "type": "jsx",
+        "line": 44,
+        "content": "{/* Right: Steps Text */}"
+      },
+      {
+        "type": "jsx",
+        "line": 59,
+        "content": "{/* Steps */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\home\\ProfilePreview.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 8,
+        "content": "/* Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 19,
+        "content": "/* PHONE MOCKUP WRAPPER */"
+      },
+      {
+        "type": "multi-line",
+        "line": 22,
+        "content": "/* Avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 29,
+        "content": "/* Name */"
+      },
+      {
+        "type": "multi-line",
+        "line": 35,
+        "content": "/* Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 50,
+        "content": "/* CTA */"
+      },
+      {
+        "type": "jsx",
+        "line": 8,
+        "content": "{/* Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 19,
+        "content": "{/* PHONE MOCKUP WRAPPER */}"
+      },
+      {
+        "type": "jsx",
+        "line": 22,
+        "content": "{/* Avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 29,
+        "content": "{/* Name */}"
+      },
+      {
+        "type": "jsx",
+        "line": 35,
+        "content": "{/* Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 50,
+        "content": "{/* CTA */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\home\\WhatIs.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 8,
+        "content": "/* ---------- RIGHT SIDE (TEXT AREA) ---------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 32,
+        "content": "/* ---------- LEFT SIDE (ICON CARDS) ---------- */"
+      },
+      {
+        "type": "jsx",
+        "line": 8,
+        "content": "{/* ---------- RIGHT SIDE (TEXT AREA) ---------- */}"
+      },
+      {
+        "type": "jsx",
+        "line": 32,
+        "content": "{/* ---------- LEFT SIDE (ICON CARDS) ---------- */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\home\\WhyChoose.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 30,
+        "content": "/* -------- LEFT SIDE CONTENT -------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 45,
+        "content": "/* Feature Boxes */"
+      },
+      {
+        "type": "multi-line",
+        "line": 62,
+        "content": "/* -------- RIGHT SIDE IMAGE + BG TEXT -------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 68,
+        "content": "/* IMAGE */"
+      },
+      {
+        "type": "jsx",
+        "line": 30,
+        "content": "{/* -------- LEFT SIDE CONTENT -------- */}"
+      },
+      {
+        "type": "jsx",
+        "line": 45,
+        "content": "{/* Feature Boxes */}"
+      },
+      {
+        "type": "jsx",
+        "line": 62,
+        "content": "{/* -------- RIGHT SIDE IMAGE + BG TEXT -------- */}"
+      },
+      {
+        "type": "jsx",
+        "line": 68,
+        "content": "{/* IMAGE */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\OAuthSuccessWrapper.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 21,
+        "content": "// Updated: Pass both token and refreshToken"
+      },
+      {
+        "type": "single-line",
+        "line": 24,
+        "content": "// Redirect based on user role"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PrivacyPolicyModal.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 58,
+        "content": "/* Professional Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 104,
+        "content": "/* Content Area */"
+      },
+      {
+        "type": "multi-line",
+        "line": 140,
+        "content": "/* Privacy Commitment Banner */"
+      },
+      {
+        "type": "multi-line",
+        "line": 159,
+        "content": "/* Privacy Features Grid */"
+      },
+      {
+        "type": "multi-line",
+        "line": 201,
+        "content": "/* Document Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 224,
+        "content": "/* Contact & Support Section */"
+      },
+      {
+        "type": "multi-line",
+        "line": 272,
+        "content": "/* Document Metadata */"
+      },
+      {
+        "type": "multi-line",
+        "line": 348,
+        "content": "/* Professional Footer */"
+      },
+      {
+        "type": "jsx",
+        "line": 58,
+        "content": "{/* Professional Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 104,
+        "content": "{/* Content Area */}"
+      },
+      {
+        "type": "jsx",
+        "line": 140,
+        "content": "{/* Privacy Commitment Banner */}"
+      },
+      {
+        "type": "jsx",
+        "line": 159,
+        "content": "{/* Privacy Features Grid */}"
+      },
+      {
+        "type": "jsx",
+        "line": 201,
+        "content": "{/* Document Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 224,
+        "content": "{/* Contact & Support Section */}"
+      },
+      {
+        "type": "jsx",
+        "line": 272,
+        "content": "{/* Document Metadata */}"
+      },
+      {
+        "type": "jsx",
+        "line": 348,
+        "content": "{/* Professional Footer */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\Modals.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 61,
+        "content": "// Check if native share is available"
+      },
+      {
+        "type": "multi-line",
+        "line": 73,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 94,
+        "content": "/* Share Options */"
+      },
+      {
+        "type": "multi-line",
+        "line": 96,
+        "content": "/* Native Share (if available) */"
+      },
+      {
+        "type": "multi-line",
+        "line": 107,
+        "content": "/* Share Options Grid */"
+      },
+      {
+        "type": "jsx",
+        "line": 73,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 94,
+        "content": "{/* Share Options */}"
+      },
+      {
+        "type": "jsx",
+        "line": 96,
+        "content": "{/* Native Share (if available) */}"
+      },
+      {
+        "type": "jsx",
+        "line": 107,
+        "content": "{/* Share Options Grid */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\ProfileCardDesktop.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 45,
+        "content": "/* NFC Card Layout - Horizontal */"
+      },
+      {
+        "type": "multi-line",
+        "line": 48,
+        "content": "/* Left Side - Profile Info & QR (40%) */"
+      },
+      {
+        "type": "multi-line",
+        "line": 50,
+        "content": "/* Profile Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 52,
+        "content": "/* Avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 80,
+        "content": "/* Name & Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 96,
+        "content": "/* Quick Contact Actions */"
+      },
+      {
+        "type": "multi-line",
+        "line": 141,
+        "content": "/* QR Code */"
+      },
+      {
+        "type": "multi-line",
+        "line": 156,
+        "content": "/* Right Side - Social Links & Actions (60%) */"
+      },
+      {
+        "type": "multi-line",
+        "line": 158,
+        "content": "/* Header Actions */"
+      },
+      {
+        "type": "multi-line",
+        "line": 199,
+        "content": "/* Social Links Grid */"
+      },
+      {
+        "type": "multi-line",
+        "line": 231,
+        "content": "/* Powered By */"
+      },
+      {
+        "type": "jsx",
+        "line": 45,
+        "content": "{/* NFC Card Layout - Horizontal */}"
+      },
+      {
+        "type": "jsx",
+        "line": 48,
+        "content": "{/* Left Side - Profile Info & QR (40%) */}"
+      },
+      {
+        "type": "jsx",
+        "line": 50,
+        "content": "{/* Profile Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 52,
+        "content": "{/* Avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 80,
+        "content": "{/* Name & Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 96,
+        "content": "{/* Quick Contact Actions */}"
+      },
+      {
+        "type": "jsx",
+        "line": 141,
+        "content": "{/* QR Code */}"
+      },
+      {
+        "type": "jsx",
+        "line": 156,
+        "content": "{/* Right Side - Social Links & Actions (60%) */}"
+      },
+      {
+        "type": "jsx",
+        "line": 158,
+        "content": "{/* Header Actions */}"
+      },
+      {
+        "type": "jsx",
+        "line": 199,
+        "content": "{/* Social Links Grid */}"
+      },
+      {
+        "type": "jsx",
+        "line": 231,
+        "content": "{/* Powered By */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\ProfileCardMobile.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 47,
+        "content": "/* Main Card */"
+      },
+      {
+        "type": "multi-line",
+        "line": 49,
+        "content": "/* Profile Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 51,
+        "content": "/* Decorative Elements */"
+      },
+      {
+        "type": "multi-line",
+        "line": 56,
+        "content": "/* Avatar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 84,
+        "content": "/* Name & Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 101,
+        "content": "/* Quick Actions */"
+      },
+      {
+        "type": "multi-line",
+        "line": 143,
+        "content": "/* Action Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 169,
+        "content": "/* QR Code Collapsible */"
+      },
+      {
+        "type": "multi-line",
+        "line": 199,
+        "content": "/* Social Links */"
+      },
+      {
+        "type": "multi-line",
+        "line": 227,
+        "content": "/* Powered By */"
+      },
+      {
+        "type": "jsx",
+        "line": 47,
+        "content": "{/* Main Card */}"
+      },
+      {
+        "type": "jsx",
+        "line": 49,
+        "content": "{/* Profile Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 51,
+        "content": "{/* Decorative Elements */}"
+      },
+      {
+        "type": "jsx",
+        "line": 56,
+        "content": "{/* Avatar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 84,
+        "content": "{/* Name & Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 101,
+        "content": "{/* Quick Actions */}"
+      },
+      {
+        "type": "jsx",
+        "line": 143,
+        "content": "{/* Action Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 169,
+        "content": "{/* QR Code Collapsible */}"
+      },
+      {
+        "type": "jsx",
+        "line": 199,
+        "content": "{/* Social Links */}"
+      },
+      {
+        "type": "jsx",
+        "line": 227,
+        "content": "{/* Powered By */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\ProfileCardWrapper.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 23,
+        "content": "/* MAIN FLIP CONTAINER */"
+      },
+      {
+        "type": "multi-line",
+        "line": 31,
+        "content": "/* FRONT SIDE */"
+      },
+      {
+        "type": "multi-line",
+        "line": 56,
+        "content": "/* BACK SIDE */"
+      },
+      {
+        "type": "jsx",
+        "line": 23,
+        "content": "{/* MAIN FLIP CONTAINER */}"
+      },
+      {
+        "type": "jsx",
+        "line": 31,
+        "content": "{/* FRONT SIDE */}"
+      },
+      {
+        "type": "jsx",
+        "line": 56,
+        "content": "{/* BACK SIDE */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\ProfileContent.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 13,
+        "content": "/* BIO */"
+      },
+      {
+        "type": "multi-line",
+        "line": 37,
+        "content": "/* SOCIAL LINKS */"
+      },
+      {
+        "type": "multi-line",
+        "line": 106,
+        "content": "/* QR Code Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 127,
+        "content": "/* Flip Back */"
+      },
+      {
+        "type": "jsx",
+        "line": 13,
+        "content": "{/* BIO */}"
+      },
+      {
+        "type": "jsx",
+        "line": 37,
+        "content": "{/* SOCIAL LINKS */}"
+      },
+      {
+        "type": "jsx",
+        "line": 106,
+        "content": "{/* QR Code Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 127,
+        "content": "{/* Flip Back */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\ProfileHeader.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 18,
+        "content": "/* Animated Background */"
+      },
+      {
+        "type": "multi-line",
+        "line": 29,
+        "content": "/* NFC Chip */"
+      },
+      {
+        "type": "multi-line",
+        "line": 42,
+        "content": "/* Profile Image */"
+      },
+      {
+        "type": "multi-line",
+        "line": 70,
+        "content": "/* Name & Title */"
+      },
+      {
+        "type": "multi-line",
+        "line": 80,
+        "content": "/* Stats */"
+      },
+      {
+        "type": "multi-line",
+        "line": 95,
+        "content": "/* Quick Actions */"
+      },
+      {
+        "type": "multi-line",
+        "line": 164,
+        "content": "/* Action Buttons (Share & Save) */"
+      },
+      {
+        "type": "multi-line",
+        "line": 207,
+        "content": "/* Flip Button */"
+      },
+      {
+        "type": "jsx",
+        "line": 18,
+        "content": "{/* Animated Background */}"
+      },
+      {
+        "type": "jsx",
+        "line": 29,
+        "content": "{/* NFC Chip */}"
+      },
+      {
+        "type": "jsx",
+        "line": 42,
+        "content": "{/* Profile Image */}"
+      },
+      {
+        "type": "jsx",
+        "line": 70,
+        "content": "{/* Name & Title */}"
+      },
+      {
+        "type": "jsx",
+        "line": 80,
+        "content": "{/* Stats */}"
+      },
+      {
+        "type": "jsx",
+        "line": 95,
+        "content": "{/* Quick Actions */}"
+      },
+      {
+        "type": "jsx",
+        "line": 164,
+        "content": "{/* Action Buttons (Share & Save) */}"
+      },
+      {
+        "type": "jsx",
+        "line": 207,
+        "content": "{/* Flip Button */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\PublicProfile\\VisitorContactModal.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 16,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 83,
+        "content": "// Auto close after 3 seconds"
+      },
+      {
+        "type": "multi-line",
+        "line": 113,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 132,
+        "content": "/* Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 150,
+        "content": "/* Email Field */"
+      },
+      {
+        "type": "multi-line",
+        "line": 180,
+        "content": "/* Phone Field */"
+      },
+      {
+        "type": "multi-line",
+        "line": 210,
+        "content": "/* Submit Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 226,
+        "content": "/* Privacy Notice */"
+      },
+      {
+        "type": "jsx",
+        "line": 113,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 132,
+        "content": "{/* Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 150,
+        "content": "{/* Email Field */}"
+      },
+      {
+        "type": "jsx",
+        "line": 180,
+        "content": "{/* Phone Field */}"
+      },
+      {
+        "type": "jsx",
+        "line": 210,
+        "content": "{/* Submit Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 226,
+        "content": "{/* Privacy Notice */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\components\\TermsModal.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 54,
+        "content": "/* Professional Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 100,
+        "content": "/* Content Area */"
+      },
+      {
+        "type": "multi-line",
+        "line": 136,
+        "content": "/* Important Notice */"
+      },
+      {
+        "type": "multi-line",
+        "line": 154,
+        "content": "/* Document Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 177,
+        "content": "/* Document Metadata */"
+      },
+      {
+        "type": "multi-line",
+        "line": 252,
+        "content": "/* Professional Footer */"
+      },
+      {
+        "type": "jsx",
+        "line": 54,
+        "content": "{/* Professional Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 100,
+        "content": "{/* Content Area */}"
+      },
+      {
+        "type": "jsx",
+        "line": 136,
+        "content": "{/* Important Notice */}"
+      },
+      {
+        "type": "jsx",
+        "line": 154,
+        "content": "{/* Document Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 177,
+        "content": "{/* Document Metadata */}"
+      },
+      {
+        "type": "jsx",
+        "line": 252,
+        "content": "{/* Professional Footer */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\context\\AuthContext.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 26,
+        "content": "// Check if token is expired"
+      },
+      {
+        "type": "single-line",
+        "line": 39,
+        "content": "// Refresh access token"
+      },
+      {
+        "type": "single-line",
+        "line": 57,
+        "content": "// Update tokens"
+      },
+      {
+        "type": "single-line",
+        "line": 66,
+        "content": "// Refresh token expired or invalid, logout user"
+      },
+      {
+        "type": "single-line",
+        "line": 79,
+        "content": "// Logout and refresh page"
+      },
+      {
+        "type": "single-line",
+        "line": 81,
+        "content": "// Call logout API to invalidate refresh token"
+      },
+      {
+        "type": "single-line",
+        "line": 96,
+        "content": "// Clear local storage and state"
+      },
+      {
+        "type": "single-line",
+        "line": 104,
+        "content": "// Refresh the page to reset application state"
+      },
+      {
+        "type": "single-line",
+        "line": 108,
+        "content": "// Auto-refresh token when it's about to expire"
+      },
+      {
+        "type": "single-line",
+        "line": 118,
+        "content": "// Check immediately"
+      },
+      {
+        "type": "single-line",
+        "line": 121,
+        "content": "// Check every 5 minutes"
+      },
+      {
+        "type": "single-line",
+        "line": 127,
+        "content": "// Check if user exists and token is valid on mount and when they change"
+      },
+      {
+        "type": "single-line",
+        "line": 130,
+        "content": "// If no user or no token, clear everything"
+      },
+      {
+        "type": "single-line",
+        "line": 136,
+        "content": "// If token exists but is expired and refresh token also expired"
+      },
+      {
+        "type": "single-line",
+        "line": 147,
+        "content": "// If user exists but no token, clear everything"
+      },
+      {
+        "type": "single-line",
+        "line": 157,
+        "content": "// Verify user still exists in backend (optional but recommended)"
+      },
+      {
+        "type": "single-line",
+        "line": 171,
+        "content": "// User doesn't exist or token is invalid"
+      },
+      {
+        "type": "single-line",
+        "line": 176,
+        "content": "// Don't logout on network errors, only on auth errors"
+      },
+      {
+        "type": "single-line",
+        "line": 180,
+        "content": "// Verify user on mount"
+      },
+      {
+        "type": "single-line",
+        "line": 183,
+        "content": "// Verify user every 10 minutes"
+      },
+      {
+        "type": "single-line",
+        "line": 199,
+        "content": "// Call logout API to invalidate refresh token"
+      },
+      {
+        "type": "single-line",
+        "line": 214,
+        "content": "// Clear local storage and state"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\layout\\DashboardLayout.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 10,
+        "content": "// For Vite"
+      },
+      {
+        "type": "multi-line",
+        "line": 146,
+        "content": "/* Mobile Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 185,
+        "content": "/* Sidebar */"
+      },
+      {
+        "type": "multi-line",
+        "line": 192,
+        "content": "/* Logo Section - Fixed */"
+      },
+      {
+        "type": "multi-line",
+        "line": 205,
+        "content": "/* User Profile Card - Fixed */"
+      },
+      {
+        "type": "multi-line",
+        "line": 222,
+        "content": "/* Navigation Menu - Scrollable */"
+      },
+      {
+        "type": "multi-line",
+        "line": 258,
+        "content": "/* Quick Actions - Fixed at bottom */"
+      },
+      {
+        "type": "multi-line",
+        "line": 303,
+        "content": "/* Overlay for mobile */"
+      },
+      {
+        "type": "multi-line",
+        "line": 311,
+        "content": "/* Main Content */"
+      },
+      {
+        "type": "jsx",
+        "line": 146,
+        "content": "{/* Mobile Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 185,
+        "content": "{/* Sidebar */}"
+      },
+      {
+        "type": "jsx",
+        "line": 192,
+        "content": "{/* Logo Section - Fixed */}"
+      },
+      {
+        "type": "jsx",
+        "line": 205,
+        "content": "{/* User Profile Card - Fixed */}"
+      },
+      {
+        "type": "jsx",
+        "line": 222,
+        "content": "{/* Navigation Menu - Scrollable */}"
+      },
+      {
+        "type": "jsx",
+        "line": 258,
+        "content": "{/* Quick Actions - Fixed at bottom */}"
+      },
+      {
+        "type": "jsx",
+        "line": 303,
+        "content": "{/* Overlay for mobile */}"
+      },
+      {
+        "type": "jsx",
+        "line": 311,
+        "content": "{/* Main Content */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\layout\\Footer.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 18,
+        "content": "/* Brand */"
+      },
+      {
+        "type": "multi-line",
+        "line": 29,
+        "content": "/* Social Icons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 46,
+        "content": "/* Navigation */"
+      },
+      {
+        "type": "multi-line",
+        "line": 58,
+        "content": "/* Contact */"
+      },
+      {
+        "type": "multi-line",
+        "line": 75,
+        "content": "/* Bottom */"
+      },
+      {
+        "type": "jsx",
+        "line": 18,
+        "content": "{/* Brand */}"
+      },
+      {
+        "type": "jsx",
+        "line": 29,
+        "content": "{/* Social Icons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 46,
+        "content": "{/* Navigation */}"
+      },
+      {
+        "type": "jsx",
+        "line": 58,
+        "content": "{/* Contact */}"
+      },
+      {
+        "type": "jsx",
+        "line": 75,
+        "content": "{/* Bottom */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\layout\\Navbar.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 32,
+        "content": "// Close menu when route changes"
+      },
+      {
+        "type": "single-line",
+        "line": 37,
+        "content": "// Prevent body scroll when menu is open"
+      },
+      {
+        "type": "single-line",
+        "line": 55,
+        "content": "// Helper for NavLink class"
+      },
+      {
+        "type": "multi-line",
+        "line": 82,
+        "content": "/* LOGO */"
+      },
+      {
+        "type": "multi-line",
+        "line": 91,
+        "content": "/* DESKTOP NAV */"
+      },
+      {
+        "type": "multi-line",
+        "line": 120,
+        "content": "/* DESKTOP BUTTONS */"
+      },
+      {
+        "type": "multi-line",
+        "line": 138,
+        "content": "/* MOBILE MENU BUTTON */"
+      },
+      {
+        "type": "multi-line",
+        "line": 153,
+        "content": "/* MOBILE MENU OVERLAY & DRAWER */"
+      },
+      {
+        "type": "multi-line",
+        "line": 164,
+        "content": "/* Backdrop */"
+      },
+      {
+        "type": "multi-line",
+        "line": 170,
+        "content": "/* Drawer */"
+      },
+      {
+        "type": "multi-line",
+        "line": 179,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 203,
+        "content": "/* Navigation Links */"
+      },
+      {
+        "type": "multi-line",
+        "line": 238,
+        "content": "/* Footer Actions */"
+      },
+      {
+        "type": "jsx",
+        "line": 82,
+        "content": "{/* LOGO */}"
+      },
+      {
+        "type": "jsx",
+        "line": 91,
+        "content": "{/* DESKTOP NAV */}"
+      },
+      {
+        "type": "jsx",
+        "line": 120,
+        "content": "{/* DESKTOP BUTTONS */}"
+      },
+      {
+        "type": "jsx",
+        "line": 138,
+        "content": "{/* MOBILE MENU BUTTON */}"
+      },
+      {
+        "type": "jsx",
+        "line": 153,
+        "content": "{/* MOBILE MENU OVERLAY & DRAWER */}"
+      },
+      {
+        "type": "jsx",
+        "line": 164,
+        "content": "{/* Backdrop */}"
+      },
+      {
+        "type": "jsx",
+        "line": 170,
+        "content": "{/* Drawer */}"
+      },
+      {
+        "type": "jsx",
+        "line": 179,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 203,
+        "content": "{/* Navigation Links */}"
+      },
+      {
+        "type": "jsx",
+        "line": 238,
+        "content": "{/* Footer Actions */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\layout\\ScrollToTopButton.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 16,
+        "content": "//www.w3.org/2000/svg\""
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\About.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 25,
+        "content": "/* LEFT SIDE */"
+      },
+      {
+        "type": "multi-line",
+        "line": 67,
+        "content": "/* RIGHT SIDE */"
+      },
+      {
+        "type": "multi-line",
+        "line": 106,
+        "content": "/* LEFT */"
+      },
+      {
+        "type": "multi-line",
+        "line": 125,
+        "content": "/* RIGHT */"
+      },
+      {
+        "type": "multi-line",
+        "line": 179,
+        "content": "/* ============================\r\n          WHAT WE OFFER — SAME PADDING AS CREATE CARD\r\n      ============================= */"
+      },
+      {
+        "type": "jsx",
+        "line": 25,
+        "content": "{/* LEFT SIDE */}"
+      },
+      {
+        "type": "jsx",
+        "line": 67,
+        "content": "{/* RIGHT SIDE */}"
+      },
+      {
+        "type": "jsx",
+        "line": 106,
+        "content": "{/* LEFT */}"
+      },
+      {
+        "type": "jsx",
+        "line": 125,
+        "content": "{/* RIGHT */}"
+      },
+      {
+        "type": "jsx",
+        "line": 179,
+        "content": "{/* ============================\r\n          WHAT WE OFFER — SAME PADDING AS CREATE CARD\r\n      ============================= */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\Contact.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 15,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 17,
+        "content": "// INIT AOS"
+      },
+      {
+        "type": "multi-line",
+        "line": 73,
+        "content": "/* ================= HERO ================= */"
+      },
+      {
+        "type": "multi-line",
+        "line": 95,
+        "content": "/* ================= FORM + SIDE INFO ================= */"
+      },
+      {
+        "type": "multi-line",
+        "line": 98,
+        "content": "/* LEFT COLUMN */"
+      },
+      {
+        "type": "multi-line",
+        "line": 100,
+        "content": "/* QUICK CONTACT */"
+      },
+      {
+        "type": "multi-line",
+        "line": 149,
+        "content": "/* HOURS CARD */"
+      },
+      {
+        "type": "multi-line",
+        "line": 187,
+        "content": "/* FORM COLUMN */"
+      },
+      {
+        "type": "multi-line",
+        "line": 255,
+        "content": "/* REASSURANCE SECTION */"
+      },
+      {
+        "type": "jsx",
+        "line": 73,
+        "content": "{/* ================= HERO ================= */}"
+      },
+      {
+        "type": "jsx",
+        "line": 95,
+        "content": "{/* ================= FORM + SIDE INFO ================= */}"
+      },
+      {
+        "type": "jsx",
+        "line": 98,
+        "content": "{/* LEFT COLUMN */}"
+      },
+      {
+        "type": "jsx",
+        "line": 100,
+        "content": "{/* QUICK CONTACT */}"
+      },
+      {
+        "type": "jsx",
+        "line": 149,
+        "content": "{/* HOURS CARD */}"
+      },
+      {
+        "type": "jsx",
+        "line": 187,
+        "content": "{/* FORM COLUMN */}"
+      },
+      {
+        "type": "jsx",
+        "line": 255,
+        "content": "{/* REASSURANCE SECTION */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\CreateCard.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 116,
+        "content": "// If user entered a full link"
+      },
+      {
+        "type": "single-line",
+        "line": 117,
+        "content": "//\") || username.startsWith(\"https://\")) {"
+      },
+      {
+        "type": "single-line",
+        "line": 123,
+        "content": "//instagram.com/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 125,
+        "content": "//linkedin.com/in/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 127,
+        "content": "//twitter.com/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 129,
+        "content": "//github.com/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 131,
+        "content": "//${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 145,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 318,
+        "content": "// Extract the actual error message from the response"
+      },
+      {
+        "type": "single-line",
+        "line": 322,
+        "content": "// Remove \"Validation error:\" prefix if it exists"
+      },
+      {
+        "type": "single-line",
+        "line": 325,
+        "content": "// Otherwise use the general message"
+      },
+      {
+        "type": "single-line",
+        "line": 329,
+        "content": "// If there are validation errors array, format them"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\dashboard\\Analytics.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 13,
+        "content": "// For Vite"
+      },
+      {
+        "type": "multi-line",
+        "line": 389,
+        "content": "/* VISITOR CONTACTS SECTION - REPLACES RECENT VIEWS */"
+      },
+      {
+        "type": "jsx",
+        "line": 389,
+        "content": "{/* VISITOR CONTACTS SECTION - REPLACES RECENT VIEWS */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\dashboard\\DashboardOverview.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 16,
+        "content": "// For Vite"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\dashboard\\EditProfile.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 23,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 131,
+        "content": "//\") || username.startsWith(\"https://\")) {"
+      },
+      {
+        "type": "single-line",
+        "line": 137,
+        "content": "//instagram.com/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 139,
+        "content": "//linkedin.com/in/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 141,
+        "content": "//twitter.com/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 143,
+        "content": "//github.com/${username}`;"
+      },
+      {
+        "type": "single-line",
+        "line": 145,
+        "content": "//${username}`;"
+      },
+      {
+        "type": "multi-line",
+        "line": 309,
+        "content": "/* Main Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 335,
+        "content": "/* Sidebar */"
+      },
+      {
+        "type": "jsx",
+        "line": 309,
+        "content": "{/* Main Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 335,
+        "content": "{/* Sidebar */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\dashboard\\MyProfiles.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 17,
+        "content": "// For Vite"
+      },
+      {
+        "type": "multi-line",
+        "line": 194,
+        "content": "/* Profiles Grid/List */"
+      },
+      {
+        "type": "jsx",
+        "line": 194,
+        "content": "{/* Profiles Grid/List */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\dashboard\\Settings.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 10,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 23,
+        "content": "/* Profile Settings Section */"
+      },
+      {
+        "type": "multi-line",
+        "line": 26,
+        "content": "/* Password Settings Section */"
+      },
+      {
+        "type": "jsx",
+        "line": 10,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 23,
+        "content": "{/* Profile Settings Section */}"
+      },
+      {
+        "type": "jsx",
+        "line": 26,
+        "content": "{/* Password Settings Section */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\ForgotPassword.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 13,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 121,
+        "content": "//www.w3.org/2000/svg\""
+      },
+      {
+        "type": "multi-line",
+        "line": 47,
+        "content": "/* WRAPPER */"
+      },
+      {
+        "type": "multi-line",
+        "line": 65,
+        "content": "/* Success Message */"
+      },
+      {
+        "type": "multi-line",
+        "line": 75,
+        "content": "/* Error Alert */"
+      },
+      {
+        "type": "multi-line",
+        "line": 85,
+        "content": "/* FORM */"
+      },
+      {
+        "type": "multi-line",
+        "line": 87,
+        "content": "/* Email */"
+      },
+      {
+        "type": "multi-line",
+        "line": 111,
+        "content": "/* Submit Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 146,
+        "content": "/* Back to Login */"
+      },
+      {
+        "type": "jsx",
+        "line": 47,
+        "content": "{/* WRAPPER */}"
+      },
+      {
+        "type": "jsx",
+        "line": 65,
+        "content": "{/* Success Message */}"
+      },
+      {
+        "type": "jsx",
+        "line": 75,
+        "content": "{/* Error Alert */}"
+      },
+      {
+        "type": "jsx",
+        "line": 85,
+        "content": "{/* FORM */}"
+      },
+      {
+        "type": "jsx",
+        "line": 87,
+        "content": "{/* Email */}"
+      },
+      {
+        "type": "jsx",
+        "line": 111,
+        "content": "{/* Submit Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 146,
+        "content": "{/* Back to Login */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\Gellary.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 7,
+        "content": "// Brand colors from your theme"
+      },
+      {
+        "type": "single-line",
+        "line": 18,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 23,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 28,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 33,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 38,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 43,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 48,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "single-line",
+        "line": 53,
+        "content": "//images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\","
+      },
+      {
+        "type": "multi-line",
+        "line": 86,
+        "content": "/* Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 99,
+        "content": "/* Gallery Grid */"
+      },
+      {
+        "type": "multi-line",
+        "line": 110,
+        "content": "/* Glow Effect */"
+      },
+      {
+        "type": "multi-line",
+        "line": 118,
+        "content": "/* Image Container */"
+      },
+      {
+        "type": "multi-line",
+        "line": 129,
+        "content": "/* Overlay */"
+      },
+      {
+        "type": "multi-line",
+        "line": 155,
+        "content": "/* Action Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 175,
+        "content": "/* Border Accent */"
+      },
+      {
+        "type": "multi-line",
+        "line": 187,
+        "content": "/* Lightbox Modal */"
+      },
+      {
+        "type": "multi-line",
+        "line": 195,
+        "content": "/* Close Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 216,
+        "content": "/* Image */"
+      },
+      {
+        "type": "multi-line",
+        "line": 229,
+        "content": "/* Info */"
+      },
+      {
+        "type": "multi-line",
+        "line": 250,
+        "content": "/* Decorative Elements */"
+      },
+      {
+        "type": "jsx",
+        "line": 86,
+        "content": "{/* Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 99,
+        "content": "{/* Gallery Grid */}"
+      },
+      {
+        "type": "jsx",
+        "line": 110,
+        "content": "{/* Glow Effect */}"
+      },
+      {
+        "type": "jsx",
+        "line": 118,
+        "content": "{/* Image Container */}"
+      },
+      {
+        "type": "jsx",
+        "line": 129,
+        "content": "{/* Overlay */}"
+      },
+      {
+        "type": "jsx",
+        "line": 155,
+        "content": "{/* Action Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 175,
+        "content": "{/* Border Accent */}"
+      },
+      {
+        "type": "jsx",
+        "line": 187,
+        "content": "{/* Lightbox Modal */}"
+      },
+      {
+        "type": "jsx",
+        "line": 195,
+        "content": "{/* Close Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 216,
+        "content": "{/* Image */}"
+      },
+      {
+        "type": "jsx",
+        "line": 229,
+        "content": "{/* Info */}"
+      },
+      {
+        "type": "jsx",
+        "line": 250,
+        "content": "{/* Decorative Elements */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\HowItWorks.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 8,
+        "content": "/* ================= HERO ================= */"
+      },
+      {
+        "type": "multi-line",
+        "line": 10,
+        "content": "/* Animated Background */"
+      },
+      {
+        "type": "multi-line",
+        "line": 27,
+        "content": "/* =============== VIDEO SECTION =============== */"
+      },
+      {
+        "type": "multi-line",
+        "line": 39,
+        "content": "/* 3D Video Card */"
+      },
+      {
+        "type": "multi-line",
+        "line": 47,
+        "content": "/* Header Badges */"
+      },
+      {
+        "type": "multi-line",
+        "line": 56,
+        "content": "/* VIDEO AREA */"
+      },
+      {
+        "type": "multi-line",
+        "line": 72,
+        "content": "/* ================= BEFORE / AFTER ================= */"
+      },
+      {
+        "type": "multi-line",
+        "line": 75,
+        "content": "/* عنوان بنفس ستايل اللي فوق */"
+      },
+      {
+        "type": "multi-line",
+        "line": 91,
+        "content": "/* 3D Boxes */"
+      },
+      {
+        "type": "multi-line",
+        "line": 126,
+        "content": "/* ================= CTA ================= */"
+      },
+      {
+        "type": "jsx",
+        "line": 8,
+        "content": "{/* ================= HERO ================= */}"
+      },
+      {
+        "type": "jsx",
+        "line": 10,
+        "content": "{/* Animated Background */}"
+      },
+      {
+        "type": "jsx",
+        "line": 27,
+        "content": "{/* =============== VIDEO SECTION =============== */}"
+      },
+      {
+        "type": "jsx",
+        "line": 39,
+        "content": "{/* 3D Video Card */}"
+      },
+      {
+        "type": "jsx",
+        "line": 47,
+        "content": "{/* Header Badges */}"
+      },
+      {
+        "type": "jsx",
+        "line": 56,
+        "content": "{/* VIDEO AREA */}"
+      },
+      {
+        "type": "jsx",
+        "line": 72,
+        "content": "{/* ================= BEFORE / AFTER ================= */}"
+      },
+      {
+        "type": "jsx",
+        "line": 75,
+        "content": "{/* عنوان بنفس ستايل اللي فوق */}"
+      },
+      {
+        "type": "jsx",
+        "line": 91,
+        "content": "{/* 3D Boxes */}"
+      },
+      {
+        "type": "jsx",
+        "line": 126,
+        "content": "{/* ================= CTA ================= */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\Login.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 21,
+        "content": "// ✅ NEW: Get location state"
+      },
+      {
+        "type": "single-line",
+        "line": 22,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 56,
+        "content": "// Updated: Pass refreshToken to login function"
+      },
+      {
+        "type": "single-line",
+        "line": 69,
+        "content": "// Check if there's a returnTo path from location state"
+      },
+      {
+        "type": "single-line",
+        "line": 103,
+        "content": "// Pass returnTo when redirecting to verify-account"
+      },
+      {
+        "type": "single-line",
+        "line": 221,
+        "content": "//www.w3.org/2000/svg\""
+      },
+      {
+        "type": "single-line",
+        "line": 258,
+        "content": "// ✅ NEW: Pass returnTo to signup"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\NotFound.jsx",
+    "comments": [
+      {
+        "type": "multi-line",
+        "line": 7,
+        "content": "/* Decorative floating circles */"
+      },
+      {
+        "type": "multi-line",
+        "line": 27,
+        "content": "/* Subtle underline animation */"
+      },
+      {
+        "type": "jsx",
+        "line": 7,
+        "content": "{/* Decorative floating circles */}"
+      },
+      {
+        "type": "jsx",
+        "line": 27,
+        "content": "{/* Subtle underline animation */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\OAuthSuccess.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 11,
+        "content": "// ✅ Safe: Only runs once if token and user are valid"
+      },
+      {
+        "type": "single-line",
+        "line": 12,
+        "content": "// or whatever route you want"
+      },
+      {
+        "type": "single-line",
+        "line": 14,
+        "content": "// ✅ Only trigger once if token/user change from outside"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\OTPVerify.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 41,
+        "content": "// Countdown timer for OTP resend"
+      },
+      {
+        "type": "single-line",
+        "line": 78,
+        "content": "// Allow only digits"
+      },
+      {
+        "type": "single-line",
+        "line": 96,
+        "content": "// Focus on last filled input or last input"
+      },
+      {
+        "type": "single-line",
+        "line": 251,
+        "content": "//www.w3.org/2000/svg\""
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\Pricing.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 17,
+        "content": "// parallax background"
+      },
+      {
+        "type": "single-line",
+        "line": 111,
+        "content": "// Apple / cinematic easing"
+      },
+      {
+        "type": "single-line",
+        "line": 114,
+        "content": "// slower, more cinematic stagger"
+      },
+      {
+        "type": "single-line",
+        "line": 300,
+        "content": "// deeper tilt"
+      },
+      {
+        "type": "multi-line",
+        "line": 161,
+        "content": "/* Parallax luxury background blobs */"
+      },
+      {
+        "type": "multi-line",
+        "line": 175,
+        "content": "/* HERO */"
+      },
+      {
+        "type": "multi-line",
+        "line": 229,
+        "content": "/* PLANS */"
+      },
+      {
+        "type": "multi-line",
+        "line": 255,
+        "content": "/* Compare Table */"
+      },
+      {
+        "type": "multi-line",
+        "line": 262,
+        "content": "/* FAQ */"
+      },
+      {
+        "type": "multi-line",
+        "line": 266,
+        "content": "/* MODAL */"
+      },
+      {
+        "type": "multi-line",
+        "line": 282,
+        "content": "/* ----------------- 3D CARD COMPONENT (Ultra) ----------------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 309,
+        "content": "/* soft gradient halo */"
+      },
+      {
+        "type": "multi-line",
+        "line": 314,
+        "content": "/* animated outer glow border */"
+      },
+      {
+        "type": "multi-line",
+        "line": 348,
+        "content": "/* luxury shine sweep */"
+      },
+      {
+        "type": "multi-line",
+        "line": 361,
+        "content": "/* Most Popular */"
+      },
+      {
+        "type": "multi-line",
+        "line": 430,
+        "content": "/* ---------- Toggle Pro ---------- */"
+      },
+      {
+        "type": "multi-line",
+        "line": 465,
+        "content": "/* ---------- Small components ---------- */"
+      },
+      {
+        "type": "jsx",
+        "line": 161,
+        "content": "{/* Parallax luxury background blobs */}"
+      },
+      {
+        "type": "jsx",
+        "line": 175,
+        "content": "{/* HERO */}"
+      },
+      {
+        "type": "jsx",
+        "line": 229,
+        "content": "{/* PLANS */}"
+      },
+      {
+        "type": "jsx",
+        "line": 255,
+        "content": "{/* Compare Table */}"
+      },
+      {
+        "type": "jsx",
+        "line": 262,
+        "content": "{/* FAQ */}"
+      },
+      {
+        "type": "jsx",
+        "line": 266,
+        "content": "{/* MODAL */}"
+      },
+      {
+        "type": "jsx",
+        "line": 309,
+        "content": "{/* soft gradient halo */}"
+      },
+      {
+        "type": "jsx",
+        "line": 314,
+        "content": "{/* animated outer glow border */}"
+      },
+      {
+        "type": "jsx",
+        "line": 348,
+        "content": "{/* luxury shine sweep */}"
+      },
+      {
+        "type": "jsx",
+        "line": 361,
+        "content": "{/* Most Popular */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\Profile.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 13,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 16,
+        "content": "// Fetch user data on component mount"
+      },
+      {
+        "type": "single-line",
+        "line": 35,
+        "content": "// Initialize form fields with current data"
+      },
+      {
+        "type": "single-line",
+        "line": 47,
+        "content": "// Handle form submission"
+      },
+      {
+        "type": "single-line",
+        "line": 66,
+        "content": "// Update the displayed user data"
+      },
+      {
+        "type": "single-line",
+        "line": 67,
+        "content": "// Exit edit mode"
+      },
+      {
+        "type": "single-line",
+        "line": 69,
+        "content": "// Show success SweetAlert"
+      },
+      {
+        "type": "single-line",
+        "line": 75,
+        "content": "// Automatically close after 2 seconds"
+      },
+      {
+        "type": "single-line",
+        "line": 80,
+        "content": "// Show error SweetAlert"
+      },
+      {
+        "type": "single-line",
+        "line": 95,
+        "content": "//www.w3.org/2000/svg\""
+      },
+      {
+        "type": "multi-line",
+        "line": 146,
+        "content": "/* Profile Header */"
+      },
+      {
+        "type": "multi-line",
+        "line": 177,
+        "content": "/* Profile Content */"
+      },
+      {
+        "type": "multi-line",
+        "line": 229,
+        "content": "/* Member Since */"
+      },
+      {
+        "type": "jsx",
+        "line": 146,
+        "content": "{/* Profile Header */}"
+      },
+      {
+        "type": "jsx",
+        "line": 177,
+        "content": "{/* Profile Content */}"
+      },
+      {
+        "type": "jsx",
+        "line": 229,
+        "content": "{/* Member Since */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\PublicProfile.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 97,
+        "content": "//wa.me/?text=${encodeURIComponent(shareText + \" \" + shareUrl)}`"
+      },
+      {
+        "type": "single-line",
+        "line": 101,
+        "content": "//twitter.com/intent/tweet?text=${encodeURIComponent("
+      },
+      {
+        "type": "single-line",
+        "line": 107,
+        "content": "//www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("
+      },
+      {
+        "type": "single-line",
+        "line": 113,
+        "content": "//www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("
+      },
+      {
+        "type": "single-line",
+        "line": 166,
+        "content": "//wa.me/${cleanNumber}`);"
+      },
+      {
+        "type": "multi-line",
+        "line": 194,
+        "content": "/* Desktop View (hidden on mobile) */"
+      },
+      {
+        "type": "multi-line",
+        "line": 211,
+        "content": "/* Mobile View (hidden on desktop) */"
+      },
+      {
+        "type": "multi-line",
+        "line": 228,
+        "content": "/* Modals */"
+      },
+      {
+        "type": "jsx",
+        "line": 194,
+        "content": "{/* Desktop View (hidden on mobile) */}"
+      },
+      {
+        "type": "jsx",
+        "line": 211,
+        "content": "{/* Mobile View (hidden on desktop) */}"
+      },
+      {
+        "type": "jsx",
+        "line": 228,
+        "content": "{/* Modals */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\ResetPassword.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 19,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 30,
+        "content": "// Password strength requirements"
+      },
+      {
+        "type": "single-line",
+        "line": 40,
+        "content": "// Countdown timer for redirection"
+      },
+      {
+        "type": "single-line",
+        "line": 70,
+        "content": "// Start countdown"
+      },
+      {
+        "type": "single-line",
+        "line": 303,
+        "content": "//www.w3.org/2000/svg\""
+      },
+      {
+        "type": "multi-line",
+        "line": 85,
+        "content": "/* WRAPPER */"
+      },
+      {
+        "type": "multi-line",
+        "line": 103,
+        "content": "/* Success Message */"
+      },
+      {
+        "type": "multi-line",
+        "line": 121,
+        "content": "/* Error Alert */"
+      },
+      {
+        "type": "multi-line",
+        "line": 131,
+        "content": "/* FORM */"
+      },
+      {
+        "type": "multi-line",
+        "line": 133,
+        "content": "/* New Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 164,
+        "content": "/* Confirm Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 184,
+        "content": "/* Password strength indicator */"
+      },
+      {
+        "type": "multi-line",
+        "line": 293,
+        "content": "/* Submit Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 330,
+        "content": "/* Back to Login */"
+      },
+      {
+        "type": "jsx",
+        "line": 85,
+        "content": "{/* WRAPPER */}"
+      },
+      {
+        "type": "jsx",
+        "line": 103,
+        "content": "{/* Success Message */}"
+      },
+      {
+        "type": "jsx",
+        "line": 121,
+        "content": "{/* Error Alert */}"
+      },
+      {
+        "type": "jsx",
+        "line": 131,
+        "content": "{/* FORM */}"
+      },
+      {
+        "type": "jsx",
+        "line": 133,
+        "content": "{/* New Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 164,
+        "content": "{/* Confirm Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 184,
+        "content": "{/* Password strength indicator */}"
+      },
+      {
+        "type": "jsx",
+        "line": 293,
+        "content": "{/* Submit Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 330,
+        "content": "{/* Back to Login */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\SignUp.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 532,
+        "content": "// Close dropdown when clicking outside"
+      },
+      {
+        "type": "single-line",
+        "line": 545,
+        "content": "// Focus search input when dropdown opens"
+      },
+      {
+        "type": "single-line",
+        "line": 552,
+        "content": "// Filter countries based on search"
+      },
+      {
+        "type": "single-line",
+        "line": 991,
+        "content": "//www.w3.org/2000/svg\""
+      },
+      {
+        "type": "multi-line",
+        "line": 702,
+        "content": "/* First Name */"
+      },
+      {
+        "type": "multi-line",
+        "line": 718,
+        "content": "/* Second Name */"
+      },
+      {
+        "type": "multi-line",
+        "line": 734,
+        "content": "/* Last Name */"
+      },
+      {
+        "type": "multi-line",
+        "line": 750,
+        "content": "/* Phone Number */"
+      },
+      {
+        "type": "multi-line",
+        "line": 757,
+        "content": "/* Custom Country Code Selector */"
+      },
+      {
+        "type": "multi-line",
+        "line": 778,
+        "content": "/* Dropdown Menu */"
+      },
+      {
+        "type": "multi-line",
+        "line": 781,
+        "content": "/* Search Box */"
+      },
+      {
+        "type": "multi-line",
+        "line": 799,
+        "content": "/* Countries List */"
+      },
+      {
+        "type": "multi-line",
+        "line": 838,
+        "content": "/* Phone Input */"
+      },
+      {
+        "type": "multi-line",
+        "line": 851,
+        "content": "/* Date of Birth */"
+      },
+      {
+        "type": "multi-line",
+        "line": 866,
+        "content": "/* Email */"
+      },
+      {
+        "type": "multi-line",
+        "line": 882,
+        "content": "/* Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 924,
+        "content": "/* Confirm Password */"
+      },
+      {
+        "type": "multi-line",
+        "line": 953,
+        "content": "/* Terms */"
+      },
+      {
+        "type": "multi-line",
+        "line": 981,
+        "content": "/* Submit Button */"
+      },
+      {
+        "type": "multi-line",
+        "line": 1017,
+        "content": "/* Divider */"
+      },
+      {
+        "type": "multi-line",
+        "line": 1024,
+        "content": "/* Social Auth Buttons */"
+      },
+      {
+        "type": "multi-line",
+        "line": 1025,
+        "content": "/* <SocialAuthButtons /> */"
+      },
+      {
+        "type": "multi-line",
+        "line": 1027,
+        "content": "/* Login Link */"
+      },
+      {
+        "type": "jsx",
+        "line": 702,
+        "content": "{/* First Name */}"
+      },
+      {
+        "type": "jsx",
+        "line": 718,
+        "content": "{/* Second Name */}"
+      },
+      {
+        "type": "jsx",
+        "line": 734,
+        "content": "{/* Last Name */}"
+      },
+      {
+        "type": "jsx",
+        "line": 750,
+        "content": "{/* Phone Number */}"
+      },
+      {
+        "type": "jsx",
+        "line": 757,
+        "content": "{/* Custom Country Code Selector */}"
+      },
+      {
+        "type": "jsx",
+        "line": 778,
+        "content": "{/* Dropdown Menu */}"
+      },
+      {
+        "type": "jsx",
+        "line": 781,
+        "content": "{/* Search Box */}"
+      },
+      {
+        "type": "jsx",
+        "line": 799,
+        "content": "{/* Countries List */}"
+      },
+      {
+        "type": "jsx",
+        "line": 838,
+        "content": "{/* Phone Input */}"
+      },
+      {
+        "type": "jsx",
+        "line": 851,
+        "content": "{/* Date of Birth */}"
+      },
+      {
+        "type": "jsx",
+        "line": 866,
+        "content": "{/* Email */}"
+      },
+      {
+        "type": "jsx",
+        "line": 882,
+        "content": "{/* Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 924,
+        "content": "{/* Confirm Password */}"
+      },
+      {
+        "type": "jsx",
+        "line": 953,
+        "content": "{/* Terms */}"
+      },
+      {
+        "type": "jsx",
+        "line": 981,
+        "content": "{/* Submit Button */}"
+      },
+      {
+        "type": "jsx",
+        "line": 1017,
+        "content": "{/* Divider */}"
+      },
+      {
+        "type": "jsx",
+        "line": 1024,
+        "content": "{/* Social Auth Buttons */}"
+      },
+      {
+        "type": "jsx",
+        "line": 1025,
+        "content": "{/* <SocialAuthButtons /> */}"
+      },
+      {
+        "type": "jsx",
+        "line": 1027,
+        "content": "{/* Login Link */}"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\abdalrahman alzaro\\Desktop\\LinkMe-Client\\src\\pages\\VerifyAccount.jsx",
+    "comments": [
+      {
+        "type": "single-line",
+        "line": 10,
+        "content": "// ✅ NEW: Get location state"
+      },
+      {
+        "type": "single-line",
+        "line": 13,
+        "content": "// For Vite"
+      },
+      {
+        "type": "single-line",
+        "line": 15,
+        "content": "// ✅ NEW: Get returnTo from state"
+      },
+      {
+        "type": "single-line",
+        "line": 37,
+        "content": "// ✅ NEW: Pass returnTo to OTP verification page"
+      },
+      {
+        "type": "single-line",
+        "line": 41,
+        "content": "// Pass the returnTo path"
+      }
+    ]
+  }
+]
