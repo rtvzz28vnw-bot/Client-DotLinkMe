@@ -5,40 +5,39 @@ import { Palette, Sparkles, Check } from "lucide-react";
 
 export default function DesignModeSection({ currentProfile, updateProfile }) {
   return (
-    <div className="space-y-4 pt-4">
+    <div className="space-y-4 pt-4 bg-gray-50/50 p-4 rounded-xl border border-gray-100">
       <div className="flex items-center justify-between">
         <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
           <Palette className="w-4 h-4" /> Design Mode
         </label>
-        <span className="text-xs text-gray-500">Choose how to customize</span>
+        <span className="text-xs text-gray-500">Customize look</span>
       </div>
 
+      {/* Mode Selection Buttons */}
       <div className="grid grid-cols-2 gap-3">
         <button
           type="button"
           onClick={() => updateProfile({ designMode: "manual" })}
           className={`
-            relative p-4 rounded-xl border-2 transition-all duration-300 text-left
+            relative p-3 rounded-xl border-2 transition-all duration-200
+            flex flex-col items-center justify-center text-center gap-2
             ${
               currentProfile.designMode === "manual"
-                ? "border-brand-primary bg-gradient-to-br from-brand-primary/10 to-brand-primary/5 shadow-lg scale-[1.02]"
-                : "border-gray-200 hover:border-brand-primary/50 hover:shadow-md"
+                ? "border-brand-primary bg-blue-50/50 shadow-sm"
+                : "border-gray-200 hover:border-blue-200 bg-white"
             }
           `}
         >
-          <div className="flex flex-col gap-2">
-            <Palette className="w-8 h-8" />
-            <div>
-              <p className="font-semibold text-sm text-brand-dark">Manual</p>
-              <p className="text-xs text-gray-600 mt-1">
-                Choose colors manually
-              </p>
-            </div>
-          </div>
+          <Palette
+            className={`w-5 h-5 ${
+              currentProfile.designMode === "manual"
+                ? "text-brand-primary"
+                : "text-gray-400"
+            }`}
+          />
+          <span className="text-sm font-semibold">Manual</span>
           {currentProfile.designMode === "manual" && (
-            <div className="absolute top-2 right-2 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center shadow-lg">
-              <Check className="w-4 h-4 text-white" />
-            </div>
+            <div className="absolute top-2 right-2 w-2 h-2 bg-brand-primary rounded-full" />
           )}
         </button>
 
@@ -46,52 +45,48 @@ export default function DesignModeSection({ currentProfile, updateProfile }) {
           type="button"
           onClick={() => updateProfile({ designMode: "ai" })}
           className={`
-            relative p-4 rounded-xl border-2 transition-all duration-300 text-left
+            relative p-3 rounded-xl border-2 transition-all duration-200
+            flex flex-col items-center justify-center text-center gap-2
             ${
               currentProfile.designMode === "ai"
-                ? "border-purple-500 bg-gradient-to-br from-purple-100 to-pink-50 shadow-lg scale-[1.02]"
-                : "border-gray-200 hover:border-purple-400 hover:shadow-md"
+                ? "border-purple-500 bg-purple-50/50 shadow-sm"
+                : "border-gray-200 hover:border-purple-200 bg-white"
             }
           `}
         >
-          <div className="flex flex-col gap-2">
-            <Sparkles className="w-8 h-8" />
-            <div>
-              <p className="font-semibold text-sm text-brand-dark flex items-center gap-1">
-                AI-Powered
-                <span className="px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold">
-                  FREE
-                </span>
-              </p>
-              <p className="text-xs text-gray-600 mt-1">
-                Let AI design for you
-              </p>
-            </div>
-          </div>
+          <Sparkles
+            className={`w-5 h-5 ${
+              currentProfile.designMode === "ai"
+                ? "text-purple-600"
+                : "text-gray-400"
+            }`}
+          />
+          <span className="text-sm font-semibold">AI Design</span>
           {currentProfile.designMode === "ai" && (
-            <div className="absolute top-2 right-2 w-6 h-6 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-lg">
-              <Check className="w-4 h-4 text-white" />
-            </div>
+            <div className="absolute top-2 right-2 w-2 h-2 bg-purple-500 rounded-full" />
           )}
         </button>
       </div>
 
-      {currentProfile.designMode === "manual" && (
-        <div className="pt-2">
-          <ColorPicker
-            color={currentProfile.color}
-            onChange={(color) => updateProfile({ color })}
-          />
-        </div>
-      )}
+      {/* Dynamic Content Area */}
+      <div className="space-y-3">
+        {currentProfile.designMode === "manual" && (
+          <div className="bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+            <ColorPicker
+              color={currentProfile.color}
+              onChange={(color) => updateProfile({ color })}
+            />
+          </div>
+        )}
 
-      {currentProfile.designMode === "ai" && (
-        <AIDesignPanel
-          aiPrompt={currentProfile.aiPrompt}
-          onPromptChange={(aiPrompt) => updateProfile({ aiPrompt })}
-          onGenerate={(aiBackground) => updateProfile({ aiBackground })}
-        />
-      )}
+        {currentProfile.designMode === "ai" && (
+          <AIDesignPanel
+            aiPrompt={currentProfile.aiPrompt}
+            onPromptChange={(aiPrompt) => updateProfile({ aiPrompt })}
+            onGenerate={(aiBackground) => updateProfile({ aiBackground })}
+          />
+        )}
+      </div>
     </div>
   );
 }

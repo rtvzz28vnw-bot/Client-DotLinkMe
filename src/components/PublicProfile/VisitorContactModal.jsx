@@ -13,7 +13,7 @@ export default function VisitorContactModal({
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
-  const API_URL = import.meta.env.VITE_API_URL; // For Vite
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,13 +31,13 @@ export default function VisitorContactModal({
     if (!email.trim()) {
       newErrors.email = "Email is required";
     } else if (!validateEmail(email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = "Please enter a valid email";
     }
 
     if (!phone.trim()) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = "Phone is required";
     } else if (!validatePhone(phone)) {
-      newErrors.phone = "Please enter a valid phone number (minimum 7 digits)";
+      newErrors.phone = "Please enter a valid phone number";
     }
 
     setErrors(newErrors);
@@ -72,25 +72,19 @@ export default function VisitorContactModal({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to save contact information");
+        throw new Error(data.message || "Failed to save contact");
       }
 
       setSubmitted(true);
-      setEmail("");
-      setPhone("");
-      setErrors({});
-
-      // Auto close after 3 seconds
       setTimeout(() => {
         handleClose();
-      }, 3000);
+      }, 2500);
     } catch (error) {
-      console.error("Error saving contact:", error);
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: error.message || "Failed to save your contact information",
-        confirmButtonColor: "#3b82f6",
+        text: error.message,
+        confirmButtonColor: "#a855f7",
       });
     } finally {
       setLoading(false);
@@ -108,110 +102,95 @@ export default function VisitorContactModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-black/95 rounded-3xl border border-white/10 shadow-2xl max-w-md w-full overflow-hidden">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden">
         {/* Header */}
-        <div className="relative px-8 pt-8 pb-6 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-b border-white/10">
+        <div className="relative bg-purple-500 p-6 text-center">
           <button
             onClick={handleClose}
-            className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors"
+            className="absolute top-4 right-4 p-2 bg-white/20 rounded-full hover:bg-white/30"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 text-white" />
           </button>
-
-          <h2 className="text-2xl font-bold text-white mb-2">
-            {submitted ? "Thank You!" : "Get in Touch"}
+          <h2 className="text-xl font-bold text-white mb-1">
+            {submitted ? "Thank You!" : "Stay Connected"}
           </h2>
-          <p className="text-gray-300 text-sm">
-            {submitted
-              ? "Your contact information has been saved"
-              : "Share your contact details to connect"}
+          <p className="text-sm text-white/90">
+            {submitted ? "Information saved" : "Share your contact details"}
           </p>
         </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-6">
           {submitted ? (
-            <div className="text-center space-y-4">
-              <div className="flex justify-center">
-                <CheckCircle className="w-16 h-16 text-green-400 animate-bounce" />
-              </div>
-              <p className="text-white text-lg font-semibold">Success!</p>
-              <p className="text-gray-300 text-sm">
-                Thank you for sharing your contact information. We'll get back
-                to you soon.
-              </p>
-              <p className="text-gray-400 text-xs">
-                This modal will close automatically...
-              </p>
+            <div className="text-center py-8">
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+              <p className="text-gray-900 font-semibold mb-2">Success!</p>
+              <p className="text-sm text-gray-600">We'll be in touch soon</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Email Field */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Email */}
               <div>
-                <label className="block text-white font-medium mb-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Mail className="w-5 h-5 text-blue-400" />
-                    Email Address
-                  </div>
+                <label className="block text-sm font-medium text-gray-900 mb-2">
+                  Email Address
                 </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (errors.email) {
-                      setErrors({ ...errors, email: "" });
-                    }
-                  }}
-                  placeholder="your.email@example.com"
-                  className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
-                    errors.email
-                      ? "border-red-500/50 focus:ring-red-500/50"
-                      : "border-white/20 focus:ring-blue-500/50 focus:border-blue-500/50"
-                  }`}
-                  disabled={loading}
-                />
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (errors.email) setErrors({ ...errors, email: "" });
+                    }}
+                    placeholder="you@example.com"
+                    className={`w-full pl-11 pr-4 py-3 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${
+                      errors.email
+                        ? "border-red-300 focus:ring-red-200"
+                        : "border-gray-200 focus:ring-purple-200"
+                    }`}
+                    disabled={loading}
+                  />
+                </div>
                 {errors.email && (
-                  <p className="text-red-400 text-sm mt-2">{errors.email}</p>
+                  <p className="text-xs text-red-500 mt-1">{errors.email}</p>
                 )}
               </div>
 
-              {/* Phone Field */}
+              {/* Phone */}
               <div>
-                <label className="block text-white font-medium mb-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Phone className="w-5 h-5 text-green-400" />
-                    Phone Number
-                  </div>
+                <label className="block text-sm font-medium text-gray-900 mb-2">
+                  Phone Number
                 </label>
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                    if (errors.phone) {
-                      setErrors({ ...errors, phone: "" });
-                    }
-                  }}
-                  placeholder="+1 (555) 123-4567"
-                  className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
-                    errors.phone
-                      ? "border-red-500/50 focus:ring-red-500/50"
-                      : "border-white/20 focus:ring-green-500/50 focus:border-green-500/50"
-                  }`}
-                  disabled={loading}
-                />
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      if (errors.phone) setErrors({ ...errors, phone: "" });
+                    }}
+                    placeholder="+1 (555) 123-4567"
+                    className={`w-full pl-11 pr-4 py-3 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${
+                      errors.phone
+                        ? "border-red-300 focus:ring-red-200"
+                        : "border-gray-200 focus:ring-purple-200"
+                    }`}
+                    disabled={loading}
+                  />
+                </div>
                 {errors.phone && (
-                  <p className="text-red-400 text-sm mt-2">{errors.phone}</p>
+                  <p className="text-xs text-red-500 mt-1">{errors.phone}</p>
                 )}
               </div>
 
-              {/* Submit Button */}
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-8 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 bg-purple-500 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -219,14 +198,12 @@ export default function VisitorContactModal({
                     Saving...
                   </>
                 ) : (
-                  "Save Contact Info"
+                  "Submit"
                 )}
               </button>
 
-              {/* Privacy Notice */}
-              <p className="text-gray-400 text-xs text-center">
-                Your information will be kept confidential and only used to
-                contact you.
+              <p className="text-xs text-gray-500 text-center">
+                Your info is safe with us 🔒
               </p>
             </form>
           )}

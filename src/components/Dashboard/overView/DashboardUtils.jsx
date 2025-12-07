@@ -1,5 +1,3 @@
-// ==================== UTILITY FUNCTIONS ====================
-
 export function generateProfileUrl(name) {
   if (!name || !name.trim()) {
     return "https://linkme.io/your-smart-identity";
@@ -15,7 +13,21 @@ export function generateProfileUrl(name) {
 }
 
 export function getTemplateStyles(template, profile) {
-  // If AI mode and has AI background, use it
+  // 🆕 PRIORITY 1: Custom Design (HIGHEST PRIORITY)
+  if (profile?.customDesignUrl) {
+    return {
+      style: {
+        backgroundImage: `url(${profile.customDesignUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      },
+      className: "",
+      textColor: "text-white",
+      overlay: "from-black/60 to-black/30",
+    };
+  }
+
+  // PRIORITY 2: If AI mode and has AI background, use it
   if (profile?.designMode === "ai" && profile?.aiBackground) {
     return {
       style: {
@@ -29,7 +41,7 @@ export function getTemplateStyles(template, profile) {
     };
   }
 
-  // Manual mode - use the selected color
+  // PRIORITY 3: Manual mode - use the selected color
   if (profile?.designMode === "manual" && profile?.color) {
     const color = profile.color;
 

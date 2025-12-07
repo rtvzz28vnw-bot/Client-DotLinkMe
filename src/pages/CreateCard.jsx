@@ -20,6 +20,8 @@ const INITIAL_PERSONAL_DATA = {
   designMode: "manual",
   aiPrompt: "",
   aiBackground: null,
+  customDesignUrl: null, // 🆕 NEW
+  customDesignFile: null, // 🆕 NEW
 };
 
 const INITIAL_BUSINESS_DATA = {
@@ -31,6 +33,8 @@ const INITIAL_BUSINESS_DATA = {
   designMode: "manual",
   aiPrompt: "",
   aiBackground: null,
+  customDesignUrl: null, // 🆕 NEW
+  customDesignFile: null, // 🆕 NEW
 };
 
 const INITIAL_SOCIAL_LINKS = {
@@ -111,10 +115,15 @@ async function createProfile(profileData, token) {
   if (profileData.avatarFile) {
     formData.append("avatar", profileData.avatarFile);
   }
+
+  // 🆕 NEW: Include custom design URL if exists
+  if (profileData.customDesignUrl) {
+    formData.append("customDesignUrl", profileData.customDesignUrl);
+  }
+
   const buildFinalLink = (platform, value) => {
     const username = value.trim();
 
-    // If user entered a full link
     if (username.startsWith("http://") || username.startsWith("https://")) {
       return username;
     }
@@ -143,7 +152,7 @@ async function createProfile(profileData, token) {
     }));
 
   formData.append("socialLinks", JSON.stringify(socialLinksArray));
-  const API_URL = import.meta.env.VITE_API_URL; // For Vite
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const response = await fetch(`${API_URL}/api/profiles`, {
     method: "POST",
@@ -241,6 +250,8 @@ export default function CreateCard() {
       aiPrompt: data.aiPrompt,
       aiBackground: data.aiBackground,
       aiGeneratedLogo: data.aiGeneratedLogo,
+      customDesignUrl: data.customDesignUrl, // 🆕 NEW
+      customDesignFile: data.customDesignFile, // 🆕 NEW
     };
     return profile;
   };
@@ -306,6 +317,7 @@ export default function CreateCard() {
           aiPrompt: currentData.aiPrompt,
           aiBackground: currentData.aiBackground,
           avatarFile: currentData.imageFile,
+          customDesignUrl: currentData.customDesignUrl, // 🆕 NEW
           profileType,
           socialLinks,
           template: selectedTemplate,
@@ -316,18 +328,14 @@ export default function CreateCard() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Extract the actual error message from the response
         let errorMessage = "Error creating profile. Please try again.";
 
         if (data.error) {
-          // Remove "Validation error:" prefix if it exists
           errorMessage = data.error.replace(/^Validation error:\s*/i, "");
         } else if (data.message) {
-          // Otherwise use the general message
           errorMessage = data.message;
         }
 
-        // If there are validation errors array, format them
         if (data.errors && Array.isArray(data.errors)) {
           errorMessage = data.errors
             .map((err) => err.replace(/^Validation error:\s*/i, ""))

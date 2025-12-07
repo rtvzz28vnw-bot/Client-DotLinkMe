@@ -139,52 +139,6 @@ export default function BasicInfoForm({
             {profile.bio?.length || 0} / 500 characters
           </p>
         </div>
-
-        {/* Color Picker */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Brand Color
-          </label>
-          <div className="flex items-center gap-4">
-            <input
-              type="color"
-              value={profile.color}
-              onChange={(e) =>
-                setProfile({ ...profile, color: e.target.value })
-              }
-              className="h-14 w-14 rounded-xl border-2 border-gray-300 cursor-pointer"
-            />
-            <div>
-              <p className="text-xs text-gray-500">
-                This color will be used for your profile theme
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Template Selector */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Card Template
-          </label>
-          <select
-            value={profile.template}
-            onChange={(e) =>
-              setProfile({ ...profile, template: e.target.value })
-            }
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary capitalize"
-          >
-            <option value="modern">Modern</option>
-            <option value="gradient">Gradient</option>
-            <option value="glass">Glass</option>
-            <option value="dark">Dark</option>
-            <option value="neon">Neon</option>
-            <option value="elegant">Elegant</option>
-          </select>
-          <p className="text-xs text-gray-500 mt-2">
-            See the preview in the sidebar to see how your card will look
-          </p>
-        </div>
       </div>
 
       {/* Save Button */}

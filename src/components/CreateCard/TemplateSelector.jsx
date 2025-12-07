@@ -17,7 +17,54 @@ export default function TemplateSelector({
         <span className="text-xs text-gray-500">Choose your card style</span>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      {/* MOBILE — Horizontal Scroll */}
+      <div className="flex sm:hidden gap-2 overflow-x-auto no-scrollbar py-1">
+        {templates.map((template) => {
+          const isSelected = selectedTemplate === template.id;
+
+          return (
+            <button
+              key={template.id}
+              type="button"
+              onClick={() => onTemplateChange(template.id)}
+              className={`
+                flex-shrink-0 w-16 h-16 rounded-xl border-2 p-2
+                flex flex-col items-center justify-center gap-1 text-[10px]
+                transition-all
+                ${
+                  isSelected
+                    ? "border-brand-primary bg-brand-primary/10 shadow-md scale-105"
+                    : "border-gray-200 bg-white hover:border-brand-primary/50"
+                }
+              `}
+            >
+              <div
+                className={`
+                  w-7 h-7 rounded-md flex items-center justify-center text-xl
+                  ${
+                    isSelected
+                      ? "bg-brand-primary/20"
+                      : "bg-gray-100 hover:bg-brand-primary/10"
+                  }
+                `}
+              >
+                {template.icon}
+              </div>
+
+              <span
+                className={`font-medium truncate ${
+                  isSelected ? "text-brand-primary" : "text-gray-600"
+                }`}
+              >
+                {template.name}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* DESKTOP — Original Grid */}
+      <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 gap-3">
         {templates.map((template) => {
           const isSelected = selectedTemplate === template.id;
           const isHovered = hoveredTemplate === template.id;
@@ -30,10 +77,10 @@ export default function TemplateSelector({
               onMouseEnter={() => setHoveredTemplate(template.id)}
               onMouseLeave={() => setHoveredTemplate(null)}
               className={`
-                relative group border-2 rounded-xl p-3 text-left transition-all duration-300 
+                relative group border-2 rounded-xl p-2 text-left transition-all duration-300
                 ${
                   isSelected
-                    ? "border-brand-primary bg-gradient-to-br from-brand-primary/10 to-brand-primary/5 shadow-lg scale-[1.02]"
+                    ? "border-brand-primary bg-brand-primary/10 shadow-lg scale-[1.02]"
                     : "border-gray-200 hover:border-brand-primary/50 hover:shadow-md"
                 }
                 ${isHovered && !isSelected ? "scale-[1.01]" : ""}
@@ -47,7 +94,7 @@ export default function TemplateSelector({
 
               <div
                 className={`
-                w-full h-16 rounded-lg mb-2 flex items-center justify-center text-2xl font-medium transition-all
+                w-full h-10 rounded-lg mb-2 flex items-center justify-center text-2xl font-medium
                 ${
                   isSelected
                     ? "bg-brand-primary/20"
@@ -60,7 +107,7 @@ export default function TemplateSelector({
 
               <div className="space-y-1">
                 <p
-                  className={`font-semibold text-sm transition-colors ${
+                  className={`font-semibold text-sm ${
                     isSelected
                       ? "text-brand-primary"
                       : "text-brand-dark group-hover:text-brand-primary"
@@ -80,25 +127,6 @@ export default function TemplateSelector({
           );
         })}
       </div>
-
-      {selectedTemplate && (
-        <div className="bg-gradient-to-r from-brand-primary/5 to-purple-500/5 border border-brand-primary/20 rounded-lg p-3">
-          <div className="flex items-start gap-2">
-            <span className="text-lg">
-              {templates.find((t) => t.id === selectedTemplate)?.icon}
-            </span>
-            <div>
-              <p className="text-xs font-medium text-brand-dark">
-                Selected:{" "}
-                {templates.find((t) => t.id === selectedTemplate)?.name}
-              </p>
-              <p className="text-xs text-gray-600 mt-0.5">
-                {templates.find((t) => t.id === selectedTemplate)?.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

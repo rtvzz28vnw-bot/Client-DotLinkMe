@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import EditProfileHeader from "../../components/Dashboard/EditProfile/EditProfileHeader";
 import EditProfileTabs from "../../components/Dashboard/EditProfile/EditProfileTabs";
 import BasicInfoForm from "../../components/Dashboard/EditProfile/BasicInfoForm";
+import DesignEditorTab from "../../components/Dashboard/EditProfile/DesignEditorTab";
 import SocialLinksTab from "../../components/Dashboard/EditProfile/SocialLinksTab";
 import SettingsTab from "../../components/Dashboard/EditProfile/SettingsTab";
 import ProfileSidebar from "../../components/Dashboard/EditProfile/ProfileSidebar";
@@ -20,7 +21,7 @@ export default function EditProfile() {
   const [socialLinks, setSocialLinks] = useState([]);
   const [activeTab, setActiveTab] = useState("basic");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL; // For Vite
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetchProfile();
@@ -118,6 +119,88 @@ export default function EditProfile() {
     }
   };
 
+  // ✅ FIXED: Handle design updates with proper JSON payload
+  const handleUpdateDesign = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+
+    try {
+      const token = localStorage.getItem("token");
+
+      // Build update payload
+      const updateData = {
+        color: profile.color,
+        template: profile.template,
+        designMode: profile.designMode || "manual",
+      };
+
+      // Add AI fields if AI mode
+      if (profile.designMode === "ai" && profile.aiBackground) {
+        updateData.aiBackground = profile.aiBackground;
+        updateData.aiPrompt = profile.aiPrompt || "";
+        updateData.customDesignUrl = null; // Clear custom design when using AI
+      }
+      // Add custom design if exists
+      else if (profile.customDesignUrl) {
+        updateData.customDesignUrl = profile.customDesignUrl;
+        updateData.aiBackground = null; // Clear AI when using custom
+        updateData.aiPrompt = null;
+      }
+      // Manual mode - clear both
+      else {
+        updateData.customDesignUrl = null;
+        updateData.aiBackground = null;
+        updateData.aiPrompt = null;
+      }
+
+      console.log("Sending design update:", updateData); // Debug log
+
+      const response = await fetch(`${API_URL}/api/profiles/${id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json", // ✅ Send as JSON
+        },
+        body: JSON.stringify(updateData),
+      });
+
+      const data = await response.json();
+      console.log("Backend response:", data); // Debug log
+
+      if (data.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Design Updated",
+          text: "Card design updated successfully!",
+          confirmButtonColor: "#060640",
+        }).then(() => {
+          fetchProfile(); // Refresh to get latest data
+        });
+      } else {
+        const errorMessage = data.error
+          ? data.error.replace(/^Validation error:\s*/i, "")
+          : data.message || "Error updating design";
+
+        Swal.fire({
+          icon: "error",
+          title: "Update Failed",
+          text: errorMessage,
+          confirmButtonColor: "#060640",
+        });
+      }
+    } catch (error) {
+      console.error("Error updating design:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Update Failed",
+        text: "Error updating design",
+        confirmButtonColor: "#060640",
+      });
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -125,6 +208,7 @@ export default function EditProfile() {
     const url = URL.createObjectURL(file);
     setProfile({ ...profile, avatarUrl: url, avatarFile: file });
   };
+
   const buildFinalLink = (platform, value) => {
     const username = value.trim();
 
@@ -218,13 +302,10 @@ export default function EditProfile() {
   const handleToggleLinkVisibility = async (linkId) => {
     try {
       const token = localStorage.getItem("token");
-      await fetch(
-        `${API_URL}/api/social-links/${linkId}/toggle-visibility`,
-        {
-          method: "PATCH",
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await fetch(`${API_URL}/api/social-links/${linkId}/toggle-visibility`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       setSocialLinks(
         socialLinks.map((link) =>
@@ -315,6 +396,15 @@ export default function EditProfile() {
                 saving={saving}
                 onSubmit={handleUpdateProfile}
                 onImageChange={handleImageChange}
+              />
+            )}
+
+            {activeTab === "design" && (
+              <DesignEditorTab
+                profile={profile}
+                setProfile={setProfile}
+                saving={saving}
+                onSubmit={handleUpdateDesign}
               />
             )}
 

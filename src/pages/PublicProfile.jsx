@@ -6,7 +6,7 @@ import ProfileCardMobile from "../components/PublicProfile/ProfileCardMobile";
 import ShareModal from "../components/PublicProfile/Modals";
 import NotFound from "./NotFound";
 import VisitorContactModal from "../components/PublicProfile/VisitorContactModal";
-import { Loader2, AlertTriangle } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function PublicProfile() {
   const { slug } = useParams();
@@ -16,7 +16,7 @@ export default function PublicProfile() {
   const [error, setError] = useState(null);
   const [showShareModal, setShowShareModal] = useState(false);
   const [showVisitorModal, setShowVisitorModal] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL; 
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetchProfile();
@@ -142,27 +142,46 @@ END:VCARD`;
     link.click();
   };
 
-  const handleCall = (phone) => {
+  const handleCall = async (linkId, phone) => {
+    try {
+      await fetch(`${API_URL}/api/social-links/${linkId}/click`, {
+        method: "POST",
+      });
+    } catch (err) {
+      console.error("Error tracking click:", err);
+    }
     window.location.href = `tel:${phone}`;
   };
 
-  const handleEmail = (email) => {
+  const handleEmail = async (linkId, email) => {
+    try {
+      await fetch(`${API_URL}/api/social-links/${linkId}/click`, {
+        method: "POST",
+      });
+    } catch (err) {
+      console.error("Error tracking click:", err);
+    }
     window.location.href = `mailto:${email}`;
   };
 
-  const handleWhatsApp = (number) => {
+  const handleWhatsApp = async (linkId, number) => {
+    try {
+      await fetch(`${API_URL}/api/social-links/${linkId}/click`, {
+        method: "POST",
+      });
+    } catch (err) {
+      console.error("Error tracking click:", err);
+    }
     const cleanNumber = number.replace(/\D/g, "");
     window.open(`https://wa.me/${cleanNumber}`);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="relative">
-          <Loader2 className="w-16 h-16 text-blue-500 animate-spin" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-8 h-8 bg-blue-500/20 rounded-full animate-pulse"></div>
-          </div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-purple-600 animate-spin mx-auto mb-4" />
+          <p className="text-gray-700 font-medium">Loading profile...</p>
         </div>
       </div>
     );
@@ -179,8 +198,8 @@ END:VCARD`;
   );
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Desktop View (hidden on mobile) */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100">
+      {/* Desktop View */}
       <div className="hidden lg:block">
         <ProfileCardDesktop
           profile={profile}
@@ -196,7 +215,7 @@ END:VCARD`;
         />
       </div>
 
-      {/* Mobile View (hidden on desktop) */}
+      {/* Mobile View */}
       <div className="lg:hidden">
         <ProfileCardMobile
           profile={profile}

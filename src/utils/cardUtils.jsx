@@ -28,6 +28,21 @@ export function adjustColorBrightness(color, percent) {
 
 // Get template styles based on design mode
 export function getTemplateStyles(selectedTemplate, currentProfile) {
+  // 🆕 PRIORITY 1: Custom Design (customDesignUrl from database)
+  if (currentProfile.customDesignUrl) {
+    return {
+      style: {
+        backgroundImage: `url(${currentProfile.customDesignUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      },
+      className: "",
+      textColor: "text-white",
+      overlay: "from-black/60 to-black/30",
+    };
+  }
+
+  // PRIORITY 2: AI Background
   if (currentProfile.designMode === "ai" && currentProfile.aiBackground) {
     return {
       style: {
@@ -41,6 +56,7 @@ export function getTemplateStyles(selectedTemplate, currentProfile) {
     };
   }
 
+  // PRIORITY 3: Uploaded image (temporary upload mode)
   if (currentProfile.designMode === "upload" && currentProfile.uploadedImage) {
     return {
       style: {
@@ -54,6 +70,7 @@ export function getTemplateStyles(selectedTemplate, currentProfile) {
     };
   }
 
+  // PRIORITY 4: Manual mode with templates
   if (currentProfile.designMode === "manual") {
     const color = currentProfile.color || "#2563eb";
 
@@ -124,6 +141,7 @@ export function getTemplateStyles(selectedTemplate, currentProfile) {
     }
   }
 
+  // Default fallback
   return {
     style: {},
     className:

@@ -1,31 +1,50 @@
-// src/components/CreateCard/LiveCardPreview.jsx
-import React, { useEffect } from "react";
-import {
-  User,
-  Building,
-  Zap,
-  Briefcase,
-  Sparkles,
-  Palette,
-} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { User, Building, Zap, Briefcase, Sparkles } from "lucide-react";
 
-// ==================== UTILITY FUNCTIONS ====================
 function generateProfileUrl(name) {
-  if (!name || !name.trim()) {
-    return "https://linkme.io/your-smart-identity";
-  }
-
+  if (!name || !name.trim()) return "https://linkme.io/your-smart-identity";
   const slug = name
     .trim()
     .toLowerCase()
     .replace(/\s+/g, "-")
     .replace(/[^a-z0-9-]/g, "");
-
   return `https://linkme.io/${slug}`;
 }
 
+function adjustColorBrightness(color, percent) {
+  const num = parseInt(color.replace("#", ""), 16);
+  const amt = Math.round(2.55 * percent);
+  const R = (num >> 16) + amt;
+  const G = ((num >> 8) & 0xff) + amt;
+  const B = (num & 0xff) + amt;
+  return (
+    "#" +
+    (
+      0x1000000 +
+      (Math.min(255, Math.max(0, R)) << 16) +
+      (Math.min(255, Math.max(0, G)) << 8) +
+      Math.min(255, Math.max(0, B))
+    )
+      .toString(16)
+      .slice(1)
+  );
+}
+
 function getTemplateStyles(selectedTemplate, currentProfile) {
-  // If AI mode and has AI background, use it
+  // PRIORITY 1: Custom Design (highest priority)
+  if (currentProfile.customDesignUrl) {
+    return {
+      style: {
+        backgroundImage: `url(${currentProfile.customDesignUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      },
+      textColor: "text-white",
+      overlay: "from-black/60 to-black/30",
+    };
+  }
+
+  // PRIORITY 2: AI Background
   if (currentProfile.designMode === "ai" && currentProfile.aiBackground) {
     return {
       style: {
@@ -33,13 +52,12 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
         backgroundSize: "cover",
         backgroundPosition: "center",
       },
-      className: "",
       textColor: "text-white",
       overlay: "from-black/40 to-black/20",
     };
   }
 
-  // Manual mode - use the selected color
+  // PRIORITY 3: Manual mode with templates
   if (currentProfile.designMode === "manual") {
     const color = currentProfile.color || "#2563eb";
 
@@ -52,7 +70,6 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
               -30
             )} 100%)`,
           },
-          className: "",
           textColor: "text-white",
           overlay: "from-black/10 to-transparent",
         };
@@ -62,12 +79,10 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
           style: {
             background: `linear-gradient(135deg, ${color}15 0%, ${color}05 100%)`,
             backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
           },
           className: "border-2 backdrop-blur-xl",
           textColor: "text-gray-800",
           borderColor: color + "40",
-          overlay: null,
         };
 
       case "dark":
@@ -75,7 +90,6 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
           style: {
             background: `linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, ${color}20 100%)`,
           },
-          className: "",
           textColor: "text-white",
           overlay: "from-transparent via-black/20 to-transparent",
         };
@@ -86,10 +100,9 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
             background: `linear-gradient(135deg, #000000 0%, #1a1a2e 100%)`,
             boxShadow: `0 0 30px ${color}40, inset 0 0 50px ${color}10`,
           },
-          className: `border-2`,
+          className: "border-2",
           textColor: "text-white",
           borderColor: color,
-          overlay: null,
           glow: color,
         };
 
@@ -101,25 +114,21 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
               -20
             )} 50%, ${adjustColorBrightness(color, 10)} 100%)`,
           },
-          className: "",
           textColor: "text-white",
           overlay: "from-white/5 to-transparent",
         };
 
-      case "modern":
       default:
+        // "modern" template
         return {
-          style: {
-            backgroundColor: color,
-          },
-          className: "",
+          style: { backgroundColor: color },
           textColor: "text-white",
           overlay: "from-black/5 to-transparent",
         };
     }
   }
 
-  // Default fallback
+  // FALLBACK: Default gradient if nothing matches
   return {
     style: {},
     className:
@@ -129,43 +138,20 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
   };
 }
 
-// Helper function to adjust color brightness
-function adjustColorBrightness(color, percent) {
-  const num = parseInt(color.replace("#", ""), 16);
-  const amt = Math.round(2.55 * percent);
-  const R = (num >> 16) + amt;
-  const G = ((num >> 8) & 0x00ff) + amt;
-  const B = (num & 0x0000ff) + amt;
-
-  return (
-    "#" +
-    (
-      0x1000000 +
-      (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
-      (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
-      (B < 255 ? (B < 1 ? 0 : B) : 255)
-    )
-      .toString(16)
-      .slice(1)
-  );
-}
-
-// ==================== CARD PREVIEW COMPONENT ====================
-function CardPreview({
-  profileType,
-  currentProfile,
-  selectedTemplate,
-  profileUrl,
-}) {
+/* ============================================================
+   CardPreview
+============================================================ */
+function CardPreview({ profileType, currentProfile, selectedTemplate }) {
   const isPersonal = profileType === "personal";
   const templateStyles = getTemplateStyles(selectedTemplate, currentProfile);
-  const isGlassTemplate = selectedTemplate === "glass";
-  const isNeonTemplate = selectedTemplate === "neon";
-  const isDarkTemplate = selectedTemplate === "dark";
 
   return (
     <div
-      className={`relative w-80 h-48 md:w-[360px] md:h-[210px] rounded-[24px] shadow-2xl overflow-hidden transition-all duration-300 ${templateStyles.className}`}
+      className={`
+        relative w-full max-w-[360px] h-[200px] sm:h-[220px]
+        rounded-[24px] shadow-2xl overflow-hidden transition-all
+        ${templateStyles.className || ""}
+      `}
       style={{
         ...templateStyles.style,
         ...(templateStyles.borderColor && {
@@ -173,203 +159,145 @@ function CardPreview({
         }),
       }}
     >
-      {/* Background overlay */}
       {templateStyles.overlay && (
         <div
           className={`absolute inset-0 bg-gradient-to-br ${templateStyles.overlay}`}
         />
       )}
 
-      {/* Neon glow effect */}
-      {isNeonTemplate && templateStyles.glow && (
-        <>
-          <div
-            className="absolute top-0 left-0 w-full h-1"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${templateStyles.glow}, transparent)`,
-              boxShadow: `0 0 20px ${templateStyles.glow}`,
-            }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-full h-1"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${templateStyles.glow}, transparent)`,
-              boxShadow: `0 0 20px ${templateStyles.glow}`,
-            }}
-          />
-        </>
-      )}
-
-      {/* Content */}
+      {/* CONTENT */}
       <div
         className={`relative z-10 h-full flex flex-col justify-between px-5 py-4 ${templateStyles.textColor}`}
       >
-        {/* Header with logo/avatar */}
         <div className="flex items-center gap-3">
           {currentProfile.image ? (
             <img
               src={currentProfile.image}
-              alt="avatar"
-              className={`w-12 h-12 ${
+              alt="Profile"
+              className={`w-12 h-12 object-cover border-2 ${
                 isPersonal ? "rounded-full" : "rounded-lg"
-              } border-2 ${
-                isGlassTemplate
-                  ? "border-gray-300"
-                  : isNeonTemplate
-                  ? `border-white shadow-[0_0_15px_${templateStyles.glow}]`
-                  : "border-white/80"
-              } object-cover shadow-lg`}
+              } shadow-lg`}
             />
           ) : (
             <div
-              className={`w-12 h-12 flex items-center justify-center text-xl ${
-                isGlassTemplate
-                  ? "bg-gray-100 border-gray-300 text-gray-600"
-                  : isNeonTemplate
-                  ? `bg-white/10 border-white text-white shadow-[0_0_15px_${templateStyles.glow}]`
-                  : "bg-white/20 border-white/40 text-white"
-              } border-2 ${
+              className={`w-12 h-12 flex items-center justify-center border-2 ${
                 isPersonal ? "rounded-full" : "rounded-lg"
-              } shadow-lg backdrop-blur-sm`}
+              } bg-white/20 backdrop-blur-sm`}
             >
-              {isPersonal ? (
-                <User className="w-4 h-4" />
-              ) : (
-                <Building className="w-4 h-4" />
-              )}
+              {isPersonal ? <User /> : <Building />}
             </div>
           )}
 
           <div>
-            <p
-              className={`text-sm font-semibold ${
-                isGlassTemplate
-                  ? "text-gray-700"
-                  : isNeonTemplate || isDarkTemplate
-                  ? "text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
-                  : "opacity-90"
-              }`}
-            >
-              Dot LinkMe
-            </p>
-            <p
-              className={`text-xs ${
-                isGlassTemplate
-                  ? "text-gray-500"
-                  : isNeonTemplate || isDarkTemplate
-                  ? "text-gray-300"
-                  : "opacity-70"
-              }`}
-            >
-              Smart NFC Digital Identity
-            </p>
+            <p className="text-sm font-semibold opacity-90">Dot LinkMe</p>
+            <p className="text-xs opacity-70">Smart NFC Digital Identity</p>
           </div>
         </div>
 
-        {/* Main content */}
-        <div className="space-y-0.5">
-          <h3
-            className={`text-lg font-bold tracking-tight ${
-              isGlassTemplate
-                ? "text-gray-900"
-                : isNeonTemplate
-                ? `drop-shadow-[0_0_10px_${templateStyles.glow}]`
-                : isDarkTemplate
-                ? "drop-shadow-lg"
-                : ""
-            }`}
-          >
-            {currentProfile.name || (isPersonal ? "Your Name" : "Company Name")}
+        <div>
+          <h3 className="text-lg font-bold tracking-tight">
+            {currentProfile.name || "Your Name"}
           </h3>
-          <p
-            className={`text-xs ${
-              isGlassTemplate
-                ? "text-gray-600"
-                : isNeonTemplate || isDarkTemplate
-                ? "text-gray-200"
-                : "opacity-85"
-            }`}
-          >
-            {currentProfile.title ||
-              (isPersonal ? "Your role or title" : "Your industry")}
+          <p className="text-xs opacity-80">
+            {currentProfile.title || "Your role or title"}
           </p>
-          <p
-            className={`text-[11px] mt-1 line-clamp-2 ${
-              isGlassTemplate
-                ? "text-gray-500"
-                : isNeonTemplate || isDarkTemplate
-                ? "text-gray-300"
-                : "opacity-75"
-            }`}
-          >
+          <p className="text-[11px] opacity-75 line-clamp-2">
             {currentProfile.bio ||
-              "This is a preview of your smart identity card. Add a short bio or description here."}
+              "This is a preview of your smart identity card."}
           </p>
         </div>
 
-        {/* Footer with tags and QR */}
-        <div className="flex items-center justify-between mt-2">
-          <div className="flex items-center gap-2 text-[10px]">
-            <span
-              className={`px-2 py-1 rounded-full ${
-                isGlassTemplate
-                  ? "bg-gray-200 text-gray-700"
-                  : isNeonTemplate
-                  ? `bg-white/10 text-white border border-white/30 backdrop-blur-sm shadow-[0_0_10px_${templateStyles.glow}]`
-                  : isDarkTemplate
-                  ? "bg-white/10 text-white backdrop-blur-sm"
-                  : "bg-black/15 text-white opacity-80"
-              }`}
-            >
-              {isPersonal ? "Personal" : "Business"}
-            </span>
-            <span
-              className={`px-2 py-1 rounded-full ${
-                isGlassTemplate
-                  ? "bg-gray-200 text-gray-700"
-                  : isNeonTemplate
-                  ? `bg-white/10 text-white border border-white/30 backdrop-blur-sm shadow-[0_0_10px_${templateStyles.glow}]`
-                  : isDarkTemplate
-                  ? "bg-white/10 text-white backdrop-blur-sm"
-                  : "bg-black/15 text-white opacity-80"
-              }`}
-            >
-              NFC • QR
-            </span>
-          </div>
+        <div className="flex items-center gap-2 text-[10px]">
+          <span className="px-2 py-1 rounded-full bg-black/20 text-white">
+            {isPersonal ? "Personal" : "Business"}
+          </span>
+          <span className="px-2 py-1 rounded-full bg-black/20 text-white">
+            NFC • QR
+          </span>
         </div>
       </div>
     </div>
   );
 }
 
-// ==================== MAIN LIVE PREVIEW COMPONENT ====================
+/* ============================================================
+   Main Component — with Mobile Preview Modal
+============================================================ */
 export default function LiveCardPreview({
   profileType,
   currentProfile,
   selectedTemplate,
 }) {
-  useEffect(() => {
-    if (currentProfile?.image) {
-    } else {
-      console.log(" LiveCardPreview - no image yet");
-    }
-  }, [currentProfile?.image]);
   const profileUrl = generateProfileUrl(currentProfile.name);
-  const [copied, setCopied] = React.useState(false);
-
-  const handleCopyUrl = () => {
-    navigator.clipboard.writeText(profileUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const [showMobilePreview, setShowMobilePreview] = useState(false);
 
   return (
-    <div
-      className="space-y-6 lg:sticky lg:top-28 lg:flex-[1] min-w-0"
-      data-aos="fade-left"
-    >
-      <div className="card-glass p-5 md:p-6 border-2 border-gray-100">
+    <>
+      {/* DESKTOP MODE - STICKY */}
+      <div
+        className="
+          hidden lg:block
+          w-full space-y-6 lg:sticky lg:top-28 lg:flex-[1] min-w-0
+        "
+        data-aos="fade-left"
+      >
+        <DesktopPreview
+          profileType={profileType}
+          currentProfile={currentProfile}
+          selectedTemplate={selectedTemplate}
+        />
+      </div>
+
+      {/* MOBILE PREVIEW BUTTON */}
+      <button
+        onClick={() => setShowMobilePreview(true)}
+        className="
+    lg:hidden fixed bottom-6 left-6 z-50
+    group transition-all duration-300 hover:scale-110
+  "
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-[#0066ff]/20 rounded-full blur-xl animate-blob"></div>
+
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[#0066ff] to-[#0052cc] rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
+            <span className="text-white text-[10px] sm:text-xs font-semibold group-hover:-translate-y-1 transition-transform duration-300">
+              Preview
+            </span>
+          </div>
+        </div>
+      </button>
+
+      {/* MOBILE PREVIEW MODAL */}
+      {showMobilePreview && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 lg:hidden"
+          onClick={() => setShowMobilePreview(false)}
+        >
+          <div
+            className="bg-white rounded-2xl
+            shadow-2xl  w-full max-w-sm p-4 relative "
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Actual Card Preview */}
+            <CardPreview
+              profileType={profileType}
+              currentProfile={currentProfile}
+              selectedTemplate={selectedTemplate}
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ============================================================
+   Desktop Layout component
+============================================================ */
+function DesktopPreview({ profileType, currentProfile, selectedTemplate }) {
+  return (
+    <>
+      <div className="card-glass p-6 border-2 border-gray-100">
         <div className="flex items-center justify-between mb-4">
           <div>
             <p className="text-xs font-semibold text-brand-primary uppercase tracking-wide flex items-center gap-1">
@@ -377,7 +305,8 @@ export default function LiveCardPreview({
             </p>
             <p className="text-sm text-gray-500">Real-time card preview</p>
           </div>
-          <span className="px-3 py-1 rounded-full bg-gradient-to-r from-brand-primary/10 to-purple-500/10 text-[11px] font-medium text-brand-primary border border-brand-primary/20">
+
+          <span className="px-3 py-1 rounded-full bg-gradient-to-r from-brand-primary/10 to-purple-500/10 text-[11px] font-medium border border-brand-primary/20">
             {profileType === "personal" ? (
               <User className="w-4 h-4" />
             ) : (
@@ -386,27 +315,12 @@ export default function LiveCardPreview({
           </span>
         </div>
 
-        {/* Template info badge */}
         <div className="mb-4 flex items-center justify-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200 shadow-sm">
             <span className="text-xs font-medium text-gray-700">
               Template:{" "}
-              <span className="font-bold">
-                {selectedTemplate.charAt(0).toUpperCase() +
-                  selectedTemplate.slice(1)}
-              </span>
+              <span className="font-bold capitalize">{selectedTemplate}</span>
             </span>
-            {currentProfile.designMode === "ai" &&
-              currentProfile.aiBackground && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 font-semibold">
-                  <Sparkles className="w-3 h-3 inline-block mr-1" /> AI
-                </span>
-              )}
-            {currentProfile.designMode === "manual" && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold">
-                <Palette className="w-3 h-3 inline-block mr-1" /> Manual
-              </span>
-            )}
           </div>
         </div>
 
@@ -415,22 +329,20 @@ export default function LiveCardPreview({
             profileType={profileType}
             currentProfile={currentProfile}
             selectedTemplate={selectedTemplate}
-            profileUrl={profileUrl}
           />
         </div>
 
+        {/* Show AI background notice */}
         {currentProfile.designMode === "ai" && currentProfile.aiBackground && (
           <div className="mt-3 p-3 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200">
             <div className="flex items-center gap-2">
-              <span className="text-lg">
-                <Sparkles className="w-5 h-5" />
-              </span>
-              <div className="flex-1">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <div>
                 <p className="text-xs font-semibold text-purple-900">
                   AI-Generated Background
                 </p>
                 {currentProfile.aiPrompt && (
-                  <p className="text-xs text-gray-600 mt-0.5">
+                  <p className="text-xs text-gray-600">
                     "{currentProfile.aiPrompt}"
                   </p>
                 )}
@@ -438,9 +350,26 @@ export default function LiveCardPreview({
             </div>
           </div>
         )}
+
+        {/* Show custom design notice */}
+        {currentProfile.customDesignUrl && (
+          <div className="mt-3 p-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-blue-600" />
+              <div>
+                <p className="text-xs font-semibold text-blue-900">
+                  Custom Design Active
+                </p>
+                <p className="text-xs text-gray-600">
+                  Your uploaded design is being used
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="card-glass p-4 text-xs text-gray-600 space-y-2 border-2 border-gray-100">
+      <div className="card-glass p-4 text-xs text-gray-600 border-2 border-gray-100">
         <ul className="space-y-1 pl-1">
           <li className="flex items-start gap-1">
             <span>•</span>
@@ -448,20 +377,18 @@ export default function LiveCardPreview({
           </li>
           <li className="flex items-start gap-1">
             <span>•</span>
-            <span>Try different templates to find your perfect style</span>
+            <span>Upload custom design for unique card appearance</span>
           </li>
           <li className="flex items-start gap-1">
             <span>•</span>
-            <span>Use AI design for unique, custom backgrounds</span>
+            <span>Use AI design for auto-generated backgrounds</span>
           </li>
           <li className="flex items-start gap-1">
             <span>•</span>
-            <span>
-              Create both profiles to separate personal & professional
-            </span>
+            <span>Experiment with templates to find your perfect match</span>
           </li>
         </ul>
       </div>
-    </div>
+    </>
   );
 }

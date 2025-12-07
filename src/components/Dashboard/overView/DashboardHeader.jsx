@@ -8,6 +8,20 @@ export default function DashboardHeader({ userName }) {
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#0066ff]/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#f2a91d]/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
+      {/* ===== SMALL MOBILE ICONS (ONLY ON MOBILE) ===== */}
+      <div className="absolute top-3 right-3 flex sm:hidden gap-2 z-20">
+        {/* Small Box 1 */}
+        <div className="w-10 h-10 rounded-xl bg-[#0066ff]/10 flex items-center justify-center border border-[#0066ff]/20">
+          <TrendingUp size={18} className="text-[#0066ff]" />
+        </div>
+
+        {/* Small Box 2 */}
+        <div className="w-10 h-10 rounded-xl bg-[#f2a91d]/10 flex items-center justify-center border border-[#f2a91d]/20">
+          <Sparkles size={18} className="text-[#f2a91d]" />
+        </div>
+      </div>
+      {/* ============================================ */}
+
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 px-4 sm:px-6 lg:px-0">
         {/* Left Content */}
         <div className="space-y-3">
@@ -42,8 +56,8 @@ export default function DashboardHeader({ userName }) {
           </p>
         </div>
 
-        {/* Right Content - Stats Preview */}
-        <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4">
+        {/* Right Content - STATS (HIDDEN ON MOBILE) */}
+        <div className="hidden sm:flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4">
           {/* Quick Stat Card 1 */}
           <div className="flex-1 min-w-[140px] bg-gradient-to-br from-white to-[#f0f5ff] rounded-2xl p-4 border border-[#0066ff]/20 shadow-sm hover:shadow-lg transition-all duration-300 group">
             <div className="flex items-center justify-between mb-2">

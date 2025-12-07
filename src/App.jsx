@@ -49,7 +49,7 @@ import Gellary from "./pages/Gellary";
 
 // pricing
 import Pricing from "./pages/Pricing";
-
+import Contacts from "./pages/dashboard/Contacts";
 /* ---------- SCROLL TO TOP COMPONENT ---------- */
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -138,6 +138,7 @@ const AppContent = () => {
           <Route path="settings" element={<Settings />} />
           <Route path="cart" element={<CartCheckout />} />
           <Route path="my-orders" element={<MyOrders />} />
+          <Route path="contacts" element={<Contacts />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

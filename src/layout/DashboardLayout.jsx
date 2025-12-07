@@ -97,6 +97,11 @@ export default function DashboardLayout() {
       label: "Analytics",
     },
     {
+      path: "/dashboard/contacts",
+      icon: <Users className="w-5 h-5" />,
+      label: "Contacts",
+    },
+    {
       path: "/dashboard/settings",
       icon: <Settings className="w-5 h-5" />,
       label: "Settings",

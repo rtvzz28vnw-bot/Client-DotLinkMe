@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Clock, Globe, ShieldCheck } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Globe,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import Swal from "sweetalert2";
 
 import AOS from "aos";
@@ -34,16 +42,13 @@ const ContactUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `${API_URL}/api/create/contact-messages`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/create/contact-messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) throw new Error("Failed to send message");
 
@@ -72,22 +77,50 @@ const ContactUs = () => {
     <div className="bg-white overflow-hidden">
       {/* ================= HERO ================= */}
       <section
-        className="relative bg-brand-gradient text-white py-20 px-4 overflow-hidden"
+        className="relative w-full py-16 sm:py-20 bg-brand-gradient text-white overflow-hidden"
         data-aos="fade-up"
       >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-96 h-96 bg-white/5 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
-          <div className="absolute w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-700"></div>
+        {/* Animated Blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-5 w-56 h-56 sm:w-80 sm:h-80 bg-brand-accent/20 rounded-full blur-2xl sm:blur-3xl animate-blob"></div>
+          <div className="absolute bottom-10 right-5 w-64 h-64 sm:w-[450px] sm:h-[450px] bg-brand-primary/30 rounded-full blur-2xl sm:blur-3xl animate-blob animation-delay-2000"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Get in <span className="text-brand-accent">Touch</span>
+        {/* Subtle Grid */}
+        <div
+          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
+                bg-[size:4rem_4rem] pointer-events-none
+                [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,#000,transparent)]"
+        ></div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow mb-4 sm:mb-6"
+            data-aos="fade-up"
+          >
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-brand-accent" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wide">
+              Contact Our Team
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h1
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight"
+            data-aos="fade-up"
+          >
+            Get In <span className="text-brand-accent">Touch</span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto leading-relaxed">
-            Have a question or want to learn more? We'd love to hear from you.
-            Our team is ready to help you get started.
+          {/* Description */}
+          <p
+            className="mt-4 sm:mt-6 text-base sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed"
+            data-aos="fade-up"
+          >
+            Have a question or want to know more? We're here to help you with
+            anything you need. Send us a message and our support team will get
+            back to you within 24 hours.
           </p>
         </div>
       </section>

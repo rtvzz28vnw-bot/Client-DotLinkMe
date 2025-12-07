@@ -12,7 +12,7 @@ import {
   Sparkles,
   Link as LinkIcon,
   Palette,
-  Zap 
+  Zap,
 } from "lucide-react";
 
 // ==================== UTILITY FUNCTIONS ====================
@@ -44,7 +44,21 @@ function adjustColorBrightness(color, percent) {
 }
 
 function getTemplateStyles(template, profile) {
-  // If AI mode and has AI background, use it
+  // 🆕 PRIORITY 1: Custom Design (HIGHEST PRIORITY)
+  if (profile?.customDesignUrl) {
+    return {
+      style: {
+        backgroundImage: `url(${profile.customDesignUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      },
+      className: "",
+      textColor: "text-white",
+      overlay: "from-black/60 to-black/30",
+    };
+  }
+
+  // PRIORITY 2: If AI mode and has AI background, use it
   if (profile?.designMode === "ai" && profile?.aiBackground) {
     return {
       style: {
@@ -58,7 +72,7 @@ function getTemplateStyles(template, profile) {
     };
   }
 
-  // Manual mode - use the selected color
+  // PRIORITY 3: Manual mode - use the selected color
   if (profile?.color) {
     const color = profile.color;
 
@@ -166,14 +180,27 @@ function LiveCardPreview({ profile }) {
           <span className="text-xs font-medium text-gray-700">
             Template: <span className="font-bold capitalize">{template}</span>
           </span>
-          {profile.designMode === "ai" && profile.aiBackground && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 font-semibold flex items-center gap-1">
-              <Zap className="w-3 h-3" />
-              AI
+
+          {/* Custom Design Badge */}
+          {profile.customDesignUrl && (
+            <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 font-semibold flex items-center gap-1">
+              <Sparkles className="w-3 h-3" />
+              Custom
             </span>
           )}
 
-          {profile.designMode === "manual" && (
+          {/* AI Badge */}
+          {!profile.customDesignUrl &&
+            profile.designMode === "ai" &&
+            profile.aiBackground && (
+              <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 font-semibold flex items-center gap-1">
+                <Zap className="w-3 h-3" />
+                AI
+              </span>
+            )}
+
+          {/* Manual Badge */}
+          {!profile.customDesignUrl && profile.designMode === "manual" && (
             <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-semibold flex items-center gap-1">
               <Palette className="w-3 h-3" />
               Manual
