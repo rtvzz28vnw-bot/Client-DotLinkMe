@@ -1,57 +1,66 @@
-// Enhanced AI Logo Generation
-export const generateAILogo = async (prompt) => {
+// AI utilities using Gemini backend API
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+// Generate AI Background using Gemini backend
+export const generateAIImage = async (prompt) => {
   try {
-    const enhancedPrompt = `Professional minimalist logo design, ${prompt}, vector art style, flat design, simple geometric shapes, clean lines, modern corporate identity, centered composition, solid white background, high contrast, professional branding, masterpiece`;
+    console.log("🎨 Calling Gemini API with prompt:", prompt);
 
-    const seed = Math.floor(Math.random() * 1000000);
-
-    const params = new URLSearchParams({
-      width: "512",
-      height: "512",
-      seed: seed.toString(),
-      nologo: "true",
-      enhance: "true",
-      model: "flux",
-      negative:
-        "blurry, low quality, pixelated, messy, complex, cluttered, text, watermark, realistic photo",
+    const response = await fetch(`${API_URL}/api/ai/generate-image`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt }),
     });
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
-      enhancedPrompt
-    )}?${params.toString()}`;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to generate image");
+    }
 
-    return imageUrl;
+    const data = await response.json();
+    console.log("✅ Successfully generated image from Gemini");
+
+    return data.imageUrl; // This is the base64 data URL
   } catch (error) {
-    console.error("AI Logo generation error:", error);
-    throw error;
+    console.error("❌ AI Image generation error:", error);
+    throw new Error(
+      error.message || "Failed to generate background. Please try again."
+    );
   }
 };
 
-// Enhanced AI Background Generation
-export const generateAIImage = async (prompt) => {
+// Generate AI Logo using Gemini backend
+export const generateAILogo = async (prompt) => {
   try {
-    const enhancedPrompt = `Abstract professional business card background, ${prompt}, high quality, modern design, smooth gradient, elegant, clean, minimalist aesthetic, premium look, studio lighting, ultra detailed, masterpiece quality`;
+    console.log("🎨 Calling Gemini API for logo with prompt:", prompt);
 
-    const seed = Math.floor(Math.random() * 1000000);
+    // Enhance prompt for better logo results
+    const logoPrompt = `Professional minimalist logo design, ${prompt}, vector art style, flat design, simple geometric shapes, clean lines, modern corporate identity, centered composition, solid white background, high contrast`;
 
-    const params = new URLSearchParams({
-      width: "800",
-      height: "500",
-      seed: seed.toString(),
-      nologo: "true",
-      enhance: "true",
-      model: "flux",
-      negative:
-        "text, watermark, logo, people, faces, low quality, blurry, grainy, artifacts",
+    const response = await fetch(`${API_URL}/api/ai/generate-image`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: logoPrompt }),
     });
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
-      enhancedPrompt
-    )}?${params.toString()}`;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to generate logo");
+    }
 
-    return imageUrl;
+    const data = await response.json();
+    console.log("✅ Successfully generated logo from Gemini");
+
+    return data.imageUrl; // This is the base64 data URL
   } catch (error) {
-    console.error("AI Image generation error:", error);
-    throw error;
+    console.error("❌ AI Logo generation error:", error);
+    throw new Error(
+      error.message || "Failed to generate logo. Please try again."
+    );
   }
 };

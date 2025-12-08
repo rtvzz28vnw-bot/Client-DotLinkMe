@@ -7,6 +7,7 @@ import {
   Lightbulb,
   Star,
   Loader2,
+  Info,
 } from "lucide-react";
 
 export default function AILogoGenerator({ onGenerate, currentImage }) {
@@ -24,30 +25,15 @@ export default function AILogoGenerator({ onGenerate, currentImage }) {
     setError(null);
 
     try {
-      const startTime = Date.now();
-
+      console.log("Starting logo generation with prompt:", logoPrompt);
       const imageUrl = await generateAILogo(logoPrompt);
-
-      // Preload the image
-      await new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(imageUrl);
-        img.onerror = () => reject(new Error("Failed to load logo"));
-        img.src = imageUrl;
-      });
-
-      const elapsedTime = Date.now() - startTime;
-      const remainingTime = Math.max(1500 - elapsedTime, 0);
-
-      if (remainingTime > 0) {
-        await new Promise((resolve) => setTimeout(resolve, remainingTime));
-      }
+      console.log("Successfully generated logo:", imageUrl);
 
       onGenerate(imageUrl);
       setLogoPrompt(""); // Clear prompt after successful generation
     } catch (err) {
-      setError("Failed to generate logo. Please try again.");
-      console.error(err);
+      console.error("Logo generation error:", err);
+      setError(err.message || "Failed to generate logo. Please try again.");
     } finally {
       setIsGenerating(false);
     }
@@ -112,6 +98,14 @@ export default function AILogoGenerator({ onGenerate, currentImage }) {
         <div className="bg-red-50 border border-red-200 rounded-lg p-2 animate-shake">
           <p className="text-xs text-red-600 flex items-center gap-1">
             <AlertTriangle className="w-4 h-4" /> {error}
+          </p>
+        </div>
+      )}
+
+      {isGenerating && (
+        <div className="bg-blue-50 border border-blue-100 rounded-lg p-2">
+          <p className="text-xs text-blue-600 flex items-center gap-1">
+            <Info className="w-4 h-4" /> This may take 10-30 seconds...
           </p>
         </div>
       )}
