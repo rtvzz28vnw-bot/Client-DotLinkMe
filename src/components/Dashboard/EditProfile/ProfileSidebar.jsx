@@ -13,6 +13,7 @@ import {
   Link as LinkIcon,
   Palette,
   Zap,
+  Loader2,
 } from "lucide-react";
 
 // ==================== UTILITY FUNCTIONS ====================
@@ -164,6 +165,10 @@ function getTemplateStyles(template, profile) {
 
 // ==================== LIVE CARD PREVIEW COMPONENT ====================
 function LiveCardPreview({ profile }) {
+  const [imageLoading, setImageLoading] = React.useState(false);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [imageError, setImageError] = React.useState(false);
+
   const isPersonal = profile.profileType === "personal";
   const template = profile.template || "modern";
   const templateStyles = getTemplateStyles(template, profile);
@@ -171,6 +176,56 @@ function LiveCardPreview({ profile }) {
   const isNeonTemplate = template === "neon";
   const isDarkTemplate = template === "dark";
   const profileUrl = generateProfileUrl(profile.slug);
+
+  // Check if we're using an AI or custom background
+  const hasBackgroundImage =
+    (profile.designMode === "ai" && profile.aiBackground) ||
+    profile.customDesignUrl;
+
+  const backgroundUrl = profile.customDesignUrl || profile.aiBackground;
+
+  // Reset loading states when background URL changes
+  React.useEffect(() => {
+    if (hasBackgroundImage && backgroundUrl) {
+      setImageLoading(true);
+      setImageLoaded(false);
+      setImageError(false);
+
+      console.log("🔄 [EDIT PREVIEW] Loading background:", backgroundUrl);
+
+      const img = new Image();
+
+      img.onload = () => {
+        console.log("✅ [EDIT PREVIEW] Background loaded successfully");
+        setImageLoading(false);
+        setImageLoaded(true);
+        setImageError(false);
+      };
+
+      img.onerror = () => {
+        console.error("❌ [EDIT PREVIEW] Failed to load background");
+        setImageLoading(false);
+        setImageLoaded(false);
+        setImageError(true);
+      };
+
+      img.src = backgroundUrl;
+
+      const timeout = setTimeout(() => {
+        if (!imageLoaded) {
+          console.warn("⏱️ [EDIT PREVIEW] Image loading timeout");
+          setImageLoading(false);
+          setImageError(true);
+        }
+      }, 30000);
+
+      return () => clearTimeout(timeout);
+    } else {
+      setImageLoading(false);
+      setImageLoaded(false);
+      setImageError(false);
+    }
+  }, [backgroundUrl, hasBackgroundImage, imageLoaded]);
 
   return (
     <div className="space-y-4">
@@ -219,6 +274,35 @@ function LiveCardPreview({ profile }) {
           }),
         }}
       >
+        {/* Loading Overlay */}
+        {imageLoading && hasBackgroundImage && (
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 to-blue-900/90 backdrop-blur-sm flex items-center justify-center z-20">
+            <div className="text-center">
+              <Loader2 className="w-8 h-8 text-white animate-spin mx-auto mb-2" />
+              <p className="text-white text-xs font-medium">
+                Loading Background...
+              </p>
+              <p className="text-white/70 text-[10px] mt-1">
+                This may take a few moments
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Error Overlay */}
+        {imageError && hasBackgroundImage && (
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/90 to-orange-900/90 backdrop-blur-sm flex items-center justify-center z-20">
+            <div className="text-center px-4">
+              <p className="text-white text-xs font-medium">
+                Failed to load background
+              </p>
+              <p className="text-white/70 text-[10px] mt-1">
+                Using fallback design
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Background overlay */}
         {templateStyles.overlay && (
           <div

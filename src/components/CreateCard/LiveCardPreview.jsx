@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { User, Building, Zap, Briefcase, Sparkles } from "lucide-react";
+import {
+  User,
+  Building,
+  Zap,
+  Briefcase,
+  Sparkles,
+  Loader2,
+} from "lucide-react";
 
 function generateProfileUrl(name) {
   if (!name || !name.trim()) return "https://linkme.io/your-smart-identity";
@@ -31,8 +38,24 @@ function adjustColorBrightness(color, percent) {
 }
 
 function getTemplateStyles(selectedTemplate, currentProfile) {
+  console.log("🔍 [PREVIEW] getTemplateStyles called");
+  console.log("🔍 [PREVIEW] selectedTemplate:", selectedTemplate);
+  console.log(
+    "🔍 [PREVIEW] currentProfile.designMode:",
+    currentProfile.designMode
+  );
+  console.log(
+    "🔍 [PREVIEW] currentProfile.aiBackground:",
+    currentProfile.aiBackground
+  );
+  console.log(
+    "🔍 [PREVIEW] currentProfile.customDesignUrl:",
+    currentProfile.customDesignUrl
+  );
+
   // PRIORITY 1: Custom Design (highest priority)
   if (currentProfile.customDesignUrl) {
+    console.log("✅ [PREVIEW] Using custom design URL");
     return {
       style: {
         backgroundImage: `url(${currentProfile.customDesignUrl})`,
@@ -46,6 +69,10 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
 
   // PRIORITY 2: AI Background
   if (currentProfile.designMode === "ai" && currentProfile.aiBackground) {
+    console.log(
+      "✅ [PREVIEW] Using AI background:",
+      currentProfile.aiBackground
+    );
     return {
       style: {
         backgroundImage: `url(${currentProfile.aiBackground})`,
@@ -59,6 +86,7 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
 
   // PRIORITY 3: Manual mode with templates
   if (currentProfile.designMode === "manual") {
+    console.log("✅ [PREVIEW] Using manual template:", selectedTemplate);
     const color = currentProfile.color || "#2563eb";
 
     switch (selectedTemplate) {
@@ -128,6 +156,7 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
     }
   }
 
+  console.log("⚠️ [PREVIEW] Using fallback default gradient");
   // FALLBACK: Default gradient if nothing matches
   return {
     style: {},
@@ -139,11 +168,71 @@ function getTemplateStyles(selectedTemplate, currentProfile) {
 }
 
 /* ============================================================
-   CardPreview
+   CardPreview - WITH LOADING INDICATOR
 ============================================================ */
 function CardPreview({ profileType, currentProfile, selectedTemplate }) {
   const isPersonal = profileType === "personal";
   const templateStyles = getTemplateStyles(selectedTemplate, currentProfile);
+
+  const [imageLoading, setImageLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Check if we're using an AI or custom background
+  const hasBackgroundImage =
+    (currentProfile.designMode === "ai" && currentProfile.aiBackground) ||
+    currentProfile.customDesignUrl;
+
+  const backgroundUrl =
+    currentProfile.customDesignUrl || currentProfile.aiBackground;
+
+  // Reset loading states when background URL changes
+  useEffect(() => {
+    if (hasBackgroundImage && backgroundUrl) {
+      setImageLoading(true);
+      setImageLoaded(false);
+      setImageError(false);
+
+      console.log(
+        "🔄 [LOADING] Starting to load background image:",
+        backgroundUrl
+      );
+
+      const img = new Image();
+
+      img.onload = () => {
+        console.log("✅ [LOADED] Background image loaded successfully");
+        setImageLoading(false);
+        setImageLoaded(true);
+        setImageError(false);
+      };
+
+      img.onerror = () => {
+        console.error("❌ [ERROR] Failed to load background image");
+        setImageLoading(false);
+        setImageLoaded(false);
+        setImageError(true);
+      };
+
+      // Start loading
+      img.src = backgroundUrl;
+
+      // Timeout after 30 seconds
+      const timeout = setTimeout(() => {
+        if (!imageLoaded) {
+          console.warn("⏱️ [TIMEOUT] Image loading timeout");
+          setImageLoading(false);
+          setImageError(true);
+        }
+      }, 30000);
+
+      return () => clearTimeout(timeout);
+    } else {
+      setImageLoading(false);
+      setImageLoaded(false);
+      setImageError(false);
+    }
+  }, [backgroundUrl, hasBackgroundImage, imageLoaded]);
 
   return (
     <div
@@ -159,6 +248,35 @@ function CardPreview({ profileType, currentProfile, selectedTemplate }) {
         }),
       }}
     >
+      {/* Loading Overlay */}
+      {imageLoading && hasBackgroundImage && (
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 to-blue-900/90 backdrop-blur-sm flex items-center justify-center z-20">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 text-white animate-spin mx-auto mb-2" />
+            <p className="text-white text-xs font-medium">
+              Loading AI Background...
+            </p>
+            <p className="text-white/70 text-[10px] mt-1">
+              This may take a few moments
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Error Overlay */}
+      {imageError && hasBackgroundImage && (
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/90 to-orange-900/90 backdrop-blur-sm flex items-center justify-center z-20">
+          <div className="text-center px-4">
+            <p className="text-white text-xs font-medium">
+              Failed to load background
+            </p>
+            <p className="text-white/70 text-[10px] mt-1">
+              Using fallback design
+            </p>
+          </div>
+        </div>
+      )}
+
       {templateStyles.overlay && (
         <div
           className={`absolute inset-0 bg-gradient-to-br ${templateStyles.overlay}`}

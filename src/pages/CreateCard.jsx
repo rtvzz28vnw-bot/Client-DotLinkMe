@@ -220,15 +220,19 @@ export default function CreateCard() {
   }, []);
 
   const updatePersonalData = (updates) => {
+    console.log("🔵 [UPDATE] Updating personal data with:", updates);
     setPersonalData((prev) => {
       const newData = { ...prev, ...updates };
+      console.log("🟢 [UPDATE] New personal data:", newData);
       return newData;
     });
   };
 
   const updateBusinessData = (updates) => {
+    console.log("🔵 [UPDATE] Updating business data with:", updates);
     setBusinessData((prev) => {
       const newData = { ...prev, ...updates };
+      console.log("🟢 [UPDATE] New business data:", newData);
       return newData;
     });
   };
