@@ -14,7 +14,7 @@ export default function MyProfiles() {
   const [filter, setFilter] = useState("all");
   const [viewMode, setViewMode] = useState("grid");
   const [showQR, setShowQR] = useState(null);
-  const API_URL = import.meta.env.VITE_API_URL; // For Vite
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetchProfiles();
@@ -55,14 +55,22 @@ export default function MyProfiles() {
   };
 
   const handleDeleteProfile = async (profileId) => {
+    // Get profile info for better messaging
+    const profile = profiles.find((p) => p.id === profileId);
+
     const result = await Swal.fire({
-      title: "Are you sure?",
-      text: "Do you really want to delete this profile?",
+      title: "Delete Profile?",
+      html: `
+        <p>Are you sure you want to delete <strong>${
+          profile?.name || "this profile"
+        }</strong>?</p>
+        <p class="text-sm text-gray-600 mt-2">This action cannot be undone.</p>
+      `,
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#EF4444",
+      cancelButtonColor: "#6B7280",
+      confirmButtonText: "Yes, delete it",
       cancelButtonText: "Cancel",
     });
 
@@ -70,26 +78,77 @@ export default function MyProfiles() {
 
     try {
       const token = localStorage.getItem("token");
-      await fetch(`${API_URL}/api/profiles/${profileId}`, {
+      const response = await fetch(`${API_URL}/api/profiles/${profileId}`, {
         method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       });
 
-      setProfiles(profiles.filter((p) => p.id !== profileId));
+      const data = await response.json();
 
-      Swal.fire({
+      if (!response.ok) {
+        // ✅ Check if profile has orders
+        if (data.hasOrders) {
+          await Swal.fire({
+            icon: "error",
+            title: "Cannot Delete Profile",
+            html: `
+              <div class="text-left">
+                <p class="text-gray-700 mb-3">${data.message}</p>
+                <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                  <p class="text-sm font-semibold text-yellow-900 mb-2">
+                    <svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Profile Locked
+                  </p>
+                  <p class="text-sm text-yellow-800 mb-2">
+                    You have <strong>${data.orderCount} order(s)</strong> for physical cards with this profile.
+                  </p>
+                  <p class="text-sm text-yellow-800">
+                    <strong>Good news:</strong> You can still edit all profile information, 
+                    including name, bio, social links, colors, and design anytime in your dashboard!
+                  </p>
+                </div>
+              </div>
+            `,
+            confirmButtonColor: "#060640",
+            confirmButtonText: "Got it",
+            width: "600px",
+          });
+        } else {
+          throw new Error(
+            data.error || data.message || "Failed to delete profile"
+          );
+        }
+        return;
+      }
+
+      // ✅ Success - profile deleted
+      await Swal.fire({
         title: "Deleted!",
-        text: "The profile has been deleted.",
+        text: "Your profile has been deleted successfully.",
         icon: "success",
-        timer: 1500,
+        timer: 2000,
         showConfirmButton: false,
       });
+
+      // ✅ REFRESH - Remove from state AND reload to ensure sync
+      setProfiles(profiles.filter((p) => p.id !== profileId));
+
+      // Reload after a short delay to ensure everything is in sync
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.error("Error deleting profile:", error);
-      Swal.fire({
+      await Swal.fire({
         title: "Error",
-        text: "Failed to delete the profile.",
+        text: error.message || "Failed to delete the profile.",
         icon: "error",
+        confirmButtonColor: "#060640",
       });
     }
   };
