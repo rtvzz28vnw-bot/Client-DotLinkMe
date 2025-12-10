@@ -10,7 +10,6 @@ import { Loader2 } from "lucide-react";
 
 export default function PublicProfile() {
   const { slug } = useParams();
-
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,41 +18,59 @@ export default function PublicProfile() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetchProfile();
-  }, [slug]);
+    let timeoutId;
+    let isMounted = true;
 
-  const fetchProfile = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/profiles/public/${slug}`);
-
-      if (!response.ok) {
-        throw new Error("Profile not found");
+    const trackView = async () => {
+      try {
+        await fetch(`${API_URL}/api/analytics/track-view/${slug}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source: "link" }),
+        });
+      } catch (err) {
+        console.error("Error tracking view:", err);
       }
+    };
 
-      const data = await response.json();
-      setProfile(data.data);
-      await trackView();
-      setTimeout(() => {
-        setShowVisitorModal(true);
-      }, 2000);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/profiles/public/${slug}`);
 
-  const trackView = async () => {
-    try {
-      await fetch(`${API_URL}/api/analytics/track-view/${slug}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source: "link" }),
-      });
-    } catch (err) {
-      console.error("Error tracking view:", err);
-    }
-  };
+        if (!response.ok) {
+          throw new Error("Profile not found");
+        }
+
+        const data = await response.json();
+
+        if (isMounted) {
+          setProfile(data.data);
+          await trackView();
+
+          timeoutId = setTimeout(() => {
+            if (isMounted) {
+              setShowVisitorModal(true);
+            }
+          }, 2000);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchProfile();
+
+    return () => {
+      isMounted = false;
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [slug, API_URL]);
 
   const handleSocialClick = async (linkId, url) => {
     try {
@@ -178,9 +195,9 @@ END:VCARD`;
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-100 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 text-purple-600 animate-spin mx-auto mb-4" />
+          <Loader2 className="w-12 h-12 text-blue-600 animate-spin mx-auto mb-4" />
           <p className="text-gray-700 font-medium">Loading profile...</p>
         </div>
       </div>
@@ -198,7 +215,7 @@ END:VCARD`;
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-100">
       {/* Desktop View */}
       <div className="hidden lg:block">
         <ProfileCardDesktop
@@ -241,8 +258,8 @@ END:VCARD`;
       <VisitorContactModal
         isOpen={showVisitorModal}
         onClose={() => setShowVisitorModal(false)}
-        profileSlug={profile.slug}
-        source="nfc"
+        profileSlug={profile?.slug}
+        source="link"
       />
     </div>
   );

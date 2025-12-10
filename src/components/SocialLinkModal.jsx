@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Plus, ChevronDown, Search } from "lucide-react";
+import { Plus, Edit2, ChevronDown, Search } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import Swal from "sweetalert2";
 
@@ -59,10 +59,12 @@ const COUNTRY_CODES = [
   { name: "Malaysia", code: "+60", shortcut: "MY" },
 ];
 
-export default function AddSocialLinkModal({
+export default function SocialLinkModal({
   isOpen,
   onClose,
   onAdd,
+  onEdit, // New prop for editing
+  editingLink = null, // The link being edited (null for add mode)
   existingPlatforms = [],
 }) {
   const [platform, setPlatform] = useState("");
@@ -74,8 +76,13 @@ export default function AddSocialLinkModal({
   const dropdownRef = useRef(null);
   const searchInputRef = useRef(null);
 
+  const isEditMode = !!editingLink;
+
+  // Filter platforms - in edit mode, include current platform
   const availablePlatforms = PLATFORM_ENUM.filter(
-    (p) => !existingPlatforms.includes(p.value)
+    (p) =>
+      !existingPlatforms.includes(p.value) ||
+      (isEditMode && p.value === editingLink.platform)
   );
 
   // Filter countries based on search query
@@ -85,6 +92,37 @@ export default function AddSocialLinkModal({
       country.code.includes(searchQuery) ||
       country.shortcut.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Extract country code and number from existing URL for edit mode
+  const extractPhoneData = (phoneUrl) => {
+    // For WhatsApp: https://wa.me/9627XXXXXXX
+    if (phoneUrl.includes("wa.me/")) {
+      const number = phoneUrl.split("wa.me/")[1];
+      // Try to match country code
+      const matchedCountry = COUNTRY_CODES.find((c) =>
+        number.startsWith(c.code.replace("+", ""))
+      );
+      if (matchedCountry) {
+        const localNumber = number.replace(
+          matchedCountry.code.replace("+", ""),
+          ""
+        );
+        return { country: matchedCountry, number: localNumber };
+      }
+      return { country: COUNTRY_CODES[0], number };
+    }
+
+    // For Phone: +9627XXXXXXX
+    const matchedCountry = COUNTRY_CODES.find((c) =>
+      phoneUrl.startsWith(c.code)
+    );
+    if (matchedCountry) {
+      const localNumber = phoneUrl.replace(matchedCountry.code, "");
+      return { country: matchedCountry, number: localNumber };
+    }
+
+    return { country: COUNTRY_CODES[0], number: phoneUrl };
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -97,7 +135,6 @@ export default function AddSocialLinkModal({
 
     if (isDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      // Focus search input when dropdown opens
       setTimeout(() => searchInputRef.current?.focus(), 100);
     }
 
@@ -106,16 +143,33 @@ export default function AddSocialLinkModal({
     };
   }, [isDropdownOpen]);
 
-  // Reset form when modal opens
+  // Initialize form when modal opens
   useEffect(() => {
     if (isOpen) {
-      setPlatform("");
-      setUrl("");
-      setSelectedCountry(COUNTRY_CODES[0]);
+      if (isEditMode) {
+        // Edit mode - populate with existing data
+        setPlatform(editingLink.platform);
+
+        if (
+          editingLink.platform === "whatsapp" ||
+          editingLink.platform === "phone"
+        ) {
+          const { country, number } = extractPhoneData(editingLink.url);
+          setSelectedCountry(country);
+          setUrl(number);
+        } else {
+          setUrl(editingLink.url);
+        }
+      } else {
+        // Add mode - reset form
+        setPlatform("");
+        setUrl("");
+        setSelectedCountry(COUNTRY_CODES[0]);
+      }
       setIsDropdownOpen(false);
       setSearchQuery("");
     }
-  }, [isOpen]);
+  }, [isOpen, editingLink, isEditMode]);
 
   const handleCountrySelect = (country) => {
     setSelectedCountry(country);
@@ -153,7 +207,6 @@ export default function AddSocialLinkModal({
         });
         return;
       }
-      // Format as WhatsApp link
       const fullNumber = `${selectedCountry.code.replace(
         "+",
         ""
@@ -176,7 +229,12 @@ export default function AddSocialLinkModal({
       trimmedUrl = `${selectedCountry.code}${cleanedNumber}`;
     }
 
-    onAdd(platform, trimmedUrl);
+    if (isEditMode) {
+      onEdit(editingLink.id, platform, trimmedUrl);
+    } else {
+      onAdd(platform, trimmedUrl);
+    }
+
     setPlatform("");
     setUrl("");
     onClose();
@@ -189,9 +247,11 @@ export default function AddSocialLinkModal({
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-        <h2 className="text-xl font-bold mb-4">Add Social Link</h2>
+        <h2 className="text-xl font-bold mb-4">
+          {isEditMode ? "Edit Social Link" : "Add Social Link"}
+        </h2>
 
-        {availablePlatforms.length === 0 ? (
+        {availablePlatforms.length === 0 && !isEditMode ? (
           <div className="text-center py-6">
             <p className="text-gray-600 mb-4">All platforms have been added!</p>
             <button
@@ -212,9 +272,10 @@ export default function AddSocialLinkModal({
                 value={platform}
                 onChange={(e) => {
                   setPlatform(e.target.value);
-                  setUrl(""); // Reset URL when platform changes
+                  if (!isEditMode) setUrl(""); // Only reset URL in add mode
                 }}
                 className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary transition-all"
+                disabled={isEditMode} // Disable platform change in edit mode
                 required
               >
                 <option value="">Select Platform</option>
@@ -224,6 +285,11 @@ export default function AddSocialLinkModal({
                   </option>
                 ))}
               </select>
+              {isEditMode && (
+                <p className="text-xs text-gray-500 mt-1">
+                  Platform cannot be changed when editing
+                </p>
+              )}
             </div>
 
             {/* Input fields */}
@@ -241,7 +307,7 @@ export default function AddSocialLinkModal({
 
                 {needsCountryCode ? (
                   <div className="flex gap-2">
-                    {/* Custom Country Code Selector */}
+                    {/* Country Code Selector */}
                     <div
                       className="w-40 flex-shrink-0 relative"
                       ref={dropdownRef}
@@ -380,7 +446,15 @@ export default function AddSocialLinkModal({
                 disabled={!platform}
                 className="px-4 py-2.5 rounded-xl bg-brand-primary text-white font-medium hover:bg-brand-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
-                <Plus className="w-4 h-4" /> Add Link
+                {isEditMode ? (
+                  <>
+                    <Edit2 className="w-4 h-4" /> Update Link
+                  </>
+                ) : (
+                  <>
+                    <Plus className="w-4 h-4" /> Add Link
+                  </>
+                )}
               </button>
             </div>
           </form>

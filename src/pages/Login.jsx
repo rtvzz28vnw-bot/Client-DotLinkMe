@@ -15,7 +15,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [rememberMe, setRememberMe] = useState(false);
+
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -186,18 +186,6 @@ const Login = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="remember-me"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4"
-                />
-                <label htmlFor="remember-me" className="text-xs text-gray-600">
-                  Remember me
-                </label>
-              </div>
               <Link
                 to="/forgot-password"
                 className="text-xs text-brand-primary font-medium hover:underline"

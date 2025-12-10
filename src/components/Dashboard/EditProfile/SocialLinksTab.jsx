@@ -1,9 +1,18 @@
 import React from "react";
-import { Link as LinkIcon, Plus, Eye, EyeOff, Trash2 } from "lucide-react";
+import {
+  Link as LinkIcon,
+  Plus,
+  Eye,
+  EyeOff,
+  Trash2,
+  Edit2,
+} from "lucide-react";
+import { getPlatformIcon } from "../../../utils/platformIcons";
 
 export default function SocialLinksTab({
   socialLinks,
   onAddLink,
+  onEditLink, // Add this new prop
   onToggleVisibility,
   onDelete,
 }) {
@@ -62,16 +71,31 @@ export default function SocialLinksTab({
               key={link.id}
               className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-brand-primary/50 hover:shadow-md transition-all group"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-primary/10 to-blue-100 flex items-center justify-center flex-shrink-0">
-                <LinkIcon className="w-5 h-5 text-brand-primary" />
+              {/* Platform-specific icon */}
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-primary to-blue-600 flex items-center justify-center flex-shrink-0">
+                <span className="[&>svg]:w-6 [&>svg]:h-6 [&>svg]:text-white">
+                  {getPlatformIcon(link.platform)}
+                </span>
               </div>
+
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-brand-dark capitalize">
                   {link.platform}
                 </p>
                 <p className="text-sm text-gray-600 truncate">{link.url}</p>
               </div>
+
               <div className="flex items-center gap-2">
+                {/* Edit Button */}
+                <button
+                  onClick={() => onEditLink(link)}
+                  className="p-2.5 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-all"
+                  title="Edit"
+                >
+                  <Edit2 className="w-4 h-4" />
+                </button>
+
+                {/* Visibility Toggle */}
                 <button
                   onClick={() => onToggleVisibility(link.id)}
                   className={`p-2.5 rounded-lg transition-all ${
@@ -87,6 +111,8 @@ export default function SocialLinksTab({
                     <EyeOff className="w-4 h-4" />
                   )}
                 </button>
+
+                {/* Delete Button */}
                 <button
                   onClick={() => onDelete(link.id)}
                   className="p-2.5 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-all"

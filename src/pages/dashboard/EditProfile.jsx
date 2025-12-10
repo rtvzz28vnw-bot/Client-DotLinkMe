@@ -9,7 +9,7 @@ import SocialLinksTab from "../../components/Dashboard/EditProfile/SocialLinksTa
 import SettingsTab from "../../components/Dashboard/EditProfile/SettingsTab";
 import ProfileSidebar from "../../components/Dashboard/EditProfile/ProfileSidebar";
 import LoadingSpinner from "../../components/Dashboard/overView/LoadingSpinner";
-import AddSocialLinkModal from "../../components/AddSocialLinkModal";
+import SocialLinkModal from "../../components/SocialLinkModal"; // ✅ Renamed from AddSocialLinkModal
 import { X } from "lucide-react";
 
 export default function EditProfile() {
@@ -21,6 +21,7 @@ export default function EditProfile() {
   const [socialLinks, setSocialLinks] = useState([]);
   const [activeTab, setActiveTab] = useState("basic");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingLink, setEditingLink] = useState(null); // ✅ NEW: Track which link is being edited
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -119,7 +120,6 @@ export default function EditProfile() {
     }
   };
 
-  // ✅ FIXED: Handle design updates with proper JSON payload
   const handleUpdateDesign = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -127,45 +127,36 @@ export default function EditProfile() {
     try {
       const token = localStorage.getItem("token");
 
-      // Build update payload
       const updateData = {
         color: profile.color,
         template: profile.template,
         designMode: profile.designMode || "manual",
       };
 
-      // Add AI fields if AI mode
       if (profile.designMode === "ai" && profile.aiBackground) {
         updateData.aiBackground = profile.aiBackground;
         updateData.aiPrompt = profile.aiPrompt || "";
-        updateData.customDesignUrl = null; // Clear custom design when using AI
-      }
-      // Add custom design if exists
-      else if (profile.customDesignUrl) {
+        updateData.customDesignUrl = null;
+      } else if (profile.customDesignUrl) {
         updateData.customDesignUrl = profile.customDesignUrl;
-        updateData.aiBackground = null; // Clear AI when using custom
+        updateData.aiBackground = null;
         updateData.aiPrompt = null;
-      }
-      // Manual mode - clear both
-      else {
+      } else {
         updateData.customDesignUrl = null;
         updateData.aiBackground = null;
         updateData.aiPrompt = null;
       }
 
-      console.log("Sending design update:", updateData); // Debug log
-
       const response = await fetch(`${API_URL}/api/profiles/${id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json", // ✅ Send as JSON
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updateData),
       });
 
       const data = await response.json();
-      console.log("Backend response:", data); // Debug log
 
       if (data.success) {
         Swal.fire({
@@ -174,7 +165,7 @@ export default function EditProfile() {
           text: "Card design updated successfully!",
           confirmButtonColor: "#060640",
         }).then(() => {
-          fetchProfile(); // Refresh to get latest data
+          fetchProfile();
         });
       } else {
         const errorMessage = data.error
@@ -253,10 +244,80 @@ export default function EditProfile() {
 
       if (response.ok) {
         fetchSocialLinks();
+        Swal.fire({
+          icon: "success",
+          title: "Added!",
+          text: "Social link added successfully.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
     } catch (error) {
       console.error("Error adding social link:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to add social link.",
+      });
     }
+  };
+
+  // ✅ NEW: Handle editing social link
+  const handleEditSocialLink = async (linkId, platform, url) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const finalUrl = buildFinalLink(platform, url);
+
+      const response = await fetch(`${API_URL}/api/social-links/${linkId}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: finalUrl,
+        }),
+      });
+
+      if (response.ok) {
+        fetchSocialLinks();
+        Swal.fire({
+          icon: "success",
+          title: "Updated!",
+          text: "Social link updated successfully.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        throw new Error("Failed to update");
+      }
+    } catch (error) {
+      console.error("Error editing social link:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to update social link.",
+      });
+    }
+  };
+
+  // ✅ NEW: Open modal for editing
+  const handleOpenEditModal = (link) => {
+    setEditingLink(link);
+    setIsModalOpen(true);
+  };
+
+  // ✅ NEW: Open modal for adding
+  const handleOpenAddModal = () => {
+    setEditingLink(null);
+    setIsModalOpen(true);
+  };
+
+  // ✅ NEW: Close modal and reset editing state
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingLink(null);
   };
 
   const handleDeleteSocialLink = async (linkId) => {
@@ -411,7 +472,8 @@ export default function EditProfile() {
             {activeTab === "links" && (
               <SocialLinksTab
                 socialLinks={socialLinks}
-                onAddLink={() => setIsModalOpen(true)}
+                onAddLink={handleOpenAddModal} // ✅ Updated
+                onEditLink={handleOpenEditModal} // ✅ NEW
                 onToggleVisibility={handleToggleLinkVisibility}
                 onDelete={handleDeleteSocialLink}
               />
@@ -431,10 +493,13 @@ export default function EditProfile() {
           />
         </div>
 
-        <AddSocialLinkModal
+        {/* ✅ Updated Modal with edit support */}
+        <SocialLinkModal
           isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          onClose={handleCloseModal}
           onAdd={handleAddSocialLink}
+          onEdit={handleEditSocialLink} // ✅ NEW
+          editingLink={editingLink} // ✅ NEW
           existingPlatforms={socialLinks.map((link) => link.platform)}
         />
       </div>

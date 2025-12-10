@@ -153,8 +153,10 @@ export default function AIDesignPanel({
         <p className="text-xs text-purple-800 flex items-center gap-1">
           <Star className="w-4 h-4" />
           <span>
-            <span className="font-semibold">Powered by Pollinations.AI</span> -
-            Free unlimited generation
+            <span className="font-semibold">
+              Powered by Nano Banana (Google Gemini)
+            </span>{" "}
+            - AI-powered generation
           </span>
         </p>
       </div>

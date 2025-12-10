@@ -164,8 +164,10 @@ export default function AILogoGenerator({ onGenerate, currentImage }) {
         <p className="text-xs text-green-800 flex items-center gap-1">
           <Star className="w-4 h-4" />
           <span>
-            <span className="font-semibold">Powered by Pollinations.AI</span> -
-            Free unlimited logo generation
+            <span className="font-semibold">
+              Powered by Nano Banana (Google Gemini)
+            </span>{" "}
+            - AI-powered logo generation
           </span>
         </p>
       </div>

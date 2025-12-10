@@ -8,6 +8,7 @@ import {
   Building2,
   Share2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { getPlatformIcon } from "../../utils/platformIcons";
 
 export default function ProfileCardMobile({
@@ -24,13 +25,8 @@ export default function ProfileCardMobile({
 }) {
   const isPersonal = profile.profileType === "personal";
 
-  // Get website link separately
-  const websiteLink = profile.socialLinks?.find(
-    (l) => l.platform === "website"
-  );
-
-  // Filter social links (exclude contact methods but INCLUDE website)
-  const visibleLinks =
+  // Filter out contact methods (phone, email, whatsapp) - KEEP website and all other social links
+  const visibleSocialLinks =
     profile.socialLinks?.filter(
       (link) =>
         link.isVisible &&
@@ -45,8 +41,8 @@ export default function ProfileCardMobile({
         {/* Phone-like Card Container */}
         <div className="bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
           <div className="bg-white rounded-[2.5rem] overflow-hidden">
-            {/* Purple Header with More Curved Wave */}
-            <div className="relative bg-purple-500 h-40">
+            {/* blue Header with More Curved Wave */}
+            <div className="relative bg-blue-500 h-40">
               {/* More Curved Wave SVG */}
               <div className="absolute bottom-0 left-0 right-0">
                 <svg
@@ -66,7 +62,7 @@ export default function ProfileCardMobile({
               {/* Share Button */}
               <button
                 onClick={() => setShowShareModal(true)}
-                className="absolute top-4 right-4 p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all"
+                className="absolute top-4 right-4 p-2 bg-white/20 backdrop-blur-sm rounded-full active:bg-white/30 transition-colors"
               >
                 <Share2 className="w-5 h-5 text-white" />
               </button>
@@ -82,9 +78,9 @@ export default function ProfileCardMobile({
                 ) : (
                   <div className="w-28 h-28 rounded-full bg-white border-4 border-white shadow-lg flex items-center justify-center">
                     {isPersonal ? (
-                      <User className="w-14 h-14 text-purple-500" />
+                      <User className="w-14 h-14 text-blue-500" />
                     ) : (
-                      <Building2 className="w-14 h-14 text-purple-500" />
+                      <Building2 className="w-14 h-14 text-blue-500" />
                     )}
                   </div>
                 )}
@@ -118,16 +114,16 @@ export default function ProfileCardMobile({
                 {phoneLink && (
                   <button
                     onClick={() => handleCall(phoneLink.id, phoneLink.url)}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 rounded-xl transition-all text-left"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 active:bg-gray-100 rounded-xl transition-all text-left"
                   >
-                    <div className="w-9 h-9 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-4 h-4 text-purple-600" />
+                    <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4 text-blue-600" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900">
-                        {phoneLink.url}
+                        Mobile phone
                       </p>
-                      <p className="text-xs text-gray-500">Work</p>
+                      <p className="text-xs text-gray-500">{phoneLink.url}</p>
                     </div>
                   </button>
                 )}
@@ -135,36 +131,16 @@ export default function ProfileCardMobile({
                 {emailLink && (
                   <button
                     onClick={() => handleEmail(emailLink.id, emailLink.url)}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 rounded-xl transition-all text-left"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 active:bg-gray-100 rounded-xl transition-all text-left"
                   >
-                    <div className="w-9 h-9 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-4 h-4 text-purple-600" />
+                    <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-4 h-4 text-blue-600" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900 truncate">
-                        {emailLink.url}
+                        Email
                       </p>
-                      <p className="text-xs text-gray-500">Work</p>
-                    </div>
-                  </button>
-                )}
-
-                {/* Website Link */}
-                {websiteLink && websiteLink.isVisible && (
-                  <button
-                    onClick={() =>
-                      handleSocialClick(websiteLink.id, websiteLink.url)
-                    }
-                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 rounded-xl transition-all text-left"
-                  >
-                    <div className="w-9 h-9 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Globe className="w-4 h-4 text-purple-600" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate">
-                        {websiteLink.url}
-                      </p>
-                      <p className="text-xs text-gray-500">Work</p>
+                      <p className="text-xs text-gray-500">{emailLink.url}</p>
                     </div>
                   </button>
                 )}
@@ -174,33 +150,35 @@ export default function ProfileCardMobile({
                     onClick={() =>
                       handleWhatsApp(whatsappLink.id, whatsappLink.url)
                     }
-                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 rounded-xl transition-all text-left"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 active:bg-gray-100 rounded-xl transition-all text-left"
                   >
-                    <div className="w-9 h-9 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MessageCircle className="w-4 h-4 text-purple-600" />
+                    <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-4 h-4 text-blue-600" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900">
-                        {whatsappLink.url}
+                        WhatsApp
                       </p>
-                      <p className="text-xs text-gray-500">WhatsApp</p>
+                      <p className="text-xs text-gray-500">
+                        {whatsappLink.url.includes("wa.me")
+                          ? whatsappLink.url.split("wa.me/")[1]
+                          : whatsappLink.url}
+                      </p>
                     </div>
                   </button>
                 )}
               </div>
 
-              {/* Social Links - Purple Icons */}
-              {visibleLinks.length > 0 && (
-                <div className="flex justify-center gap-3 mb-5">
-                  {visibleLinks.slice(0, 4).map((link) => (
+              {/* Social Links - Show ALL visible social links */}
+              {visibleSocialLinks.length > 0 && (
+                <div className="flex flex-wrap justify-center gap-3 mb-5">
+                  {visibleSocialLinks.map((link) => (
                     <button
                       key={link.id}
                       onClick={() => handleSocialClick(link.id, link.url)}
-                      className="w-11 h-11 bg-purple-500 text-white rounded-full flex items-center justify-center "
+                      className="w-11 h-11 bg-blue-500 text-white rounded-full flex items-center justify-center active:scale-95 transition-transform"
                     >
-                      <span className="text-purple-600 group-hover:text-white">
-                        {getPlatformIcon(link.platform)}
-                      </span>
+                      {getPlatformIcon(link.platform)}
                     </button>
                   ))}
                 </div>
@@ -209,14 +187,17 @@ export default function ProfileCardMobile({
               {/* Save Contact Button */}
               <button
                 onClick={handleDownloadVCard}
-                className="w-full py-3.5 bg-purple-500 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all text-sm"
+                className="w-full py-3.5 bg-blue-500 text-white font-semibold rounded-xl active:bg-blue-600 transition-all text-sm"
               >
                 + Add to Contacts
               </button>
 
               {/* Powered By */}
               <p className="text-xs text-gray-400 mt-5">
-                Powered by <span className="font-semibold">Dot LinkMe</span>
+                Powered by{" "}
+                <Link to="/" className="font-semibold">
+                  <span className="text-brand-accent">Dot</span>LinkMe
+                </Link>
               </p>
             </div>
           </div>

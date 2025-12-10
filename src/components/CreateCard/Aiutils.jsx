@@ -1,36 +1,43 @@
-// AI utilities using Pollinations AI (no backend needed)
+// AI utilities using Hugging Face (Free & Reliable)
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 // Generate AI Background
 export const generateAIImage = async (prompt) => {
   try {
     console.log("🎨 Generating AI background with prompt:", prompt);
 
-    const enhancedPrompt = `Abstract professional business card background, ${prompt}, high quality, modern design, smooth gradient, elegant, clean, minimalist aesthetic, premium look, studio lighting, ultra detailed, masterpiece quality`;
-
-    const seed = Math.floor(Math.random() * 1000000);
-
-    const params = new URLSearchParams({
-      width: "800",
-      height: "500",
-      seed: seed.toString(),
-      nologo: "true",
-      enhance: "true",
-      model: "flux",
-      negative:
-        "text, watermark, logo, people, faces, low quality, blurry, grainy, artifacts",
+    const response = await fetch(`${API_URL}/api/ai/generate-background`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt }),
     });
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
-      enhancedPrompt
-    )}?${params.toString()}`;
+    console.log("📡 Response status:", response.status);
 
-    console.log("✅ Generated image URL:", imageUrl);
-    console.log("✅ Returning image URL");
-    return imageUrl;
+    if (!response.ok) {
+      const error = await response.json();
+      console.error("❌ Server error response:", error);
+      throw new Error(
+        error.details || error.error || "Failed to generate image"
+      );
+    }
+
+    const data = await response.json();
+
+    if (!data.imageUrl) {
+      throw new Error("No image URL received from server");
+    }
+
+    console.log("✅ Generated background received (base64)");
+
+    return data.imageUrl;
   } catch (error) {
     console.error("❌ AI Image generation error:", error);
     throw new Error(
-      "Failed to generate background. Please try again with a different description."
+      error.message || "Failed to generate background. Please try again."
     );
   }
 };
@@ -40,32 +47,37 @@ export const generateAILogo = async (prompt) => {
   try {
     console.log("🎨 Generating AI logo with prompt:", prompt);
 
-    const enhancedPrompt = `Professional minimalist logo design, ${prompt}, vector art style, flat design, simple geometric shapes, clean lines, modern corporate identity, centered composition, solid white background, high contrast, professional branding, masterpiece`;
-
-    const seed = Math.floor(Math.random() * 1000000);
-
-    const params = new URLSearchParams({
-      width: "512",
-      height: "512",
-      seed: seed.toString(),
-      nologo: "true",
-      enhance: "true",
-      model: "flux",
-      negative:
-        "blurry, low quality, pixelated, messy, complex, cluttered, text, watermark, realistic photo",
+    const response = await fetch(`${API_URL}/api/ai/generate-logo`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt }),
     });
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
-      enhancedPrompt
-    )}?${params.toString()}`;
+    console.log("📡 Response status:", response.status);
 
-    console.log("✅ Generated logo URL:", imageUrl);
-    console.log("✅ Returning logo URL");
-    return imageUrl;
+    if (!response.ok) {
+      const error = await response.json();
+      console.error("❌ Server error response:", error);
+      throw new Error(
+        error.details || error.error || "Failed to generate logo"
+      );
+    }
+
+    const data = await response.json();
+
+    if (!data.imageUrl) {
+      throw new Error("No image URL received from server");
+    }
+
+    console.log("✅ Generated logo received (base64)");
+
+    return data.imageUrl;
   } catch (error) {
     console.error("❌ AI Logo generation error:", error);
     throw new Error(
-      "Failed to generate logo. Please try again with a different description."
+      error.message || "Failed to generate logo. Please try again."
     );
   }
 };

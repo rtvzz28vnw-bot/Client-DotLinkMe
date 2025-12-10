@@ -16,13 +16,19 @@ export default function VisitorContactModal({
   const API_URL = import.meta.env.VITE_API_URL;
 
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    return emailRegex.test(email.trim());
   };
 
   const validatePhone = (phone) => {
     const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-    return phoneRegex.test(phone) && phone.replace(/\D/g, "").length >= 7;
+    const trimmedPhone = phone.trim();
+    const digitsOnly = trimmedPhone.replace(/\D/g, "");
+    return (
+      phoneRegex.test(trimmedPhone) &&
+      digitsOnly.length >= 7 &&
+      digitsOnly.length <= 15
+    );
   };
 
   const handleValidation = () => {
@@ -102,13 +108,19 @@ export default function VisitorContactModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden">
+    <div
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      onClick={handleClose}
+    >
+      <div
+        className="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
-        <div className="relative bg-purple-500 p-6 text-center">
+        <div className="relative bg-blue-500 p-6 text-center">
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 bg-white/20 rounded-full hover:bg-white/30"
+            className="absolute top-4 right-4 p-2 bg-white/20 rounded-full active:bg-white/30 transition-colors"
           >
             <X className="w-5 h-5 text-white" />
           </button>
@@ -148,7 +160,7 @@ export default function VisitorContactModal({
                     className={`w-full pl-11 pr-4 py-3 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${
                       errors.email
                         ? "border-red-300 focus:ring-red-200"
-                        : "border-gray-200 focus:ring-purple-200"
+                        : "border-gray-200 focus:ring-blue-200"
                     }`}
                     disabled={loading}
                   />
@@ -172,11 +184,11 @@ export default function VisitorContactModal({
                       setPhone(e.target.value);
                       if (errors.phone) setErrors({ ...errors, phone: "" });
                     }}
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="07 XXXX XXXX"
                     className={`w-full pl-11 pr-4 py-3 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${
                       errors.phone
                         ? "border-red-300 focus:ring-red-200"
-                        : "border-gray-200 focus:ring-purple-200"
+                        : "border-gray-200 focus:ring-blue-200"
                     }`}
                     disabled={loading}
                   />
@@ -190,7 +202,7 @@ export default function VisitorContactModal({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-purple-500 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full py-3 bg-blue-500 text-white font-semibold rounded-xl active:bg-blue-600 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
